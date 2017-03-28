@@ -137,7 +137,7 @@ Al momento la sola lingua supportata è l'inglese.
 
 \paragraph{Riconoscimento contenuti non adatti ai minori} Riconosce materiali pornografici e contenuti osé in generale. Può essere impostato un livello per il filtro.
 
-\paragraph{Riconoscimento del testo (OCR)} Rileva il testo presente nell'immagine e lo trasforma affinché sia leggibile da una macchina, ruota l'immagine se necessario per rendere il testo orizzontale e fornisce le coordinate per ogni parola. Al momento sono supportati 21 linguaggi, fra cui l'inglese, l'italiano, il francese, il tedesco e lo spagnolo.
+\paragraph{Riconoscimento del testo (OCR)} Rileva il testo presente nell'immagine e lo trasforma in un flusso di parole, ruota l'immagine se necessario per rendere il testo orizzontale e fornisce le coordinate per ogni parola. Al momento sono supportati 21 linguaggi, fra cui l'inglese, l'italiano, il francese, il tedesco e lo spagnolo.
 
 L'accuratezza del riconoscimento dipende dalla qualità dell'immagine ed eventuali errori possono essere causati da immagini sfuocate, scrittura a mano, testo troppo piccolo, ecc.
    
@@ -152,21 +152,38 @@ L'accuratezza del riconoscimento dipende dalla qualità dell'immagine ed eventua
 
 
 \subsection{Esecuzione}
+Prendendo in esame il caso d'uso descritto nell'introduzione, sono state sono state individuate due tipologie di operazioni che potrebbero risolvere il problema posto: estrazioni di caratteristiche visive (e classificazione) e l'OCR.
 
-
-\paragraph{} 
-
-La prova è stata eseguita utilizzando la funzione OCR.
+\paragraph{Estrazione \textit{features} e classificazione} Come si vede nell'immagine \ref{ms-analyze}, il contenuto viene classificato come \textit{text menu} con un livello di \textit{confidence} dell'$85,5\%$.
 \begin{figure}[htbp]
 \begin{center}
-	\includegraphics[height=.5\textwidth]{img/scontrino.jpg}
-  	\hspace*{1in}
-	\includegraphics[height=.5\textwidth]{img/ms-ocr.png}
-\caption{default}
-\label{default}
+	\includegraphics[height=.3\textwidth]{img/scontrino.jpg}
+	 \hspace*{.5in}
+	\includegraphics[height=.1\textwidth]{img/ms-analyze.png}
+\caption{Estrazione delle caratteristiche.}
+\label{ms-analyze}
 \end{center}
 \end{figure}
+Vengono create anche le etichette \textit{text} e \textit{receipt}, entrambe con un alto livello di affidabilità. Quindi l'algoritmo identifica correttamente il contenuto e il significato astratto dell'immagine: è uno scontrino, o comunque una lista di elementi testuali.
 
+Tuttavia, seppur l'analisi sia corretta, non raggiunge il nostro obbiettivo di estrarre la lista di elementi dello scontrino.
+
+\paragraph{OCR} La seconda funziona che sembrerebbe essere adatta al nostro obbiettivo è il riconoscimento del testo. 
+\begin{figure}[h!]
+\begin{center}
+	\includegraphics[height=.3\textwidth]{img/scontrino.jpg}
+  	\hspace*{.5in}
+	\includegraphics[height=.3\textwidth]{img/ms-ocr.png}
+	  	\hspace*{.5in}
+	\includegraphics[height=.2\textwidth]{img/ms-ocr-2.png}
+\caption{Estrazione del testo.}
+\label{ms-ocr}
+\end{center}
+\end{figure}
+Dalla figura si vede come l'algoritmo sia riuscito a rilevare molte parole (ma non tutte) ma non i numeri (i prezzi); inoltre si nota come diverse parole siano state \textit{tradotte} erroneamente, come \textsf{capERTO} invece che ``coperto'' o \textsf{COMANI} al posto di ``contanti''.
+
+
+In conclusione non si ritiene il risultato sufficiente per lo scopo prefissato. 
 
 %%\subsection{Riassunto}
 
