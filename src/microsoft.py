@@ -83,9 +83,8 @@ def wrapper(mode):
 
 	Parameters:
 	mode: select the type of operation to perform
-		0: Analyze image
+		0: Analyze image (Tags and Classification)
 		1: OCR
-		2: Tag Image
 
 	[Documentation can be found at: https://goo.gl/htwlmc]
 	"""
@@ -109,10 +108,6 @@ def wrapper(mode):
 			"language": "it",
 			"detectOrientation": "true"
 		}
-	elif mode == 2:
-		print("[+] Mode: Tag Image.")
-		operation = "tag"
-		params = {}
 	else:
 	 	print("[!] Error: undefined operation.")
 		sys.exit(1)
@@ -148,4 +143,4 @@ if __name__ == "__main__":
 		localImage = str(sys.argv[1])
 
 	# Set parameters and then call the API
-	wrapper(2)
+	wrapper(1)
