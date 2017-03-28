@@ -141,7 +141,7 @@ if __name__ == "__main__":
 	_maxNumRetries = 10                                # not used
 
 	_urlImage = "https://cdn.pbrd.co/images/OtNOX1gbi.jpg"
-	_localImage = "scontrino.jpg"
+	_localImage = "../doc/img/scontrino.jpg"
 
 	# if there is arguments use them instead of default values
 	if len(sys.argv) == 2:
