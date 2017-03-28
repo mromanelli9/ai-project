@@ -154,7 +154,7 @@ L'accuratezza del riconoscimento dipende dalla qualità dell'immagine ed eventua
 \subsection{Esecuzione}
 Prendendo in esame il caso d'uso descritto nell'introduzione, sono state sono state individuate due tipologie di operazioni che potrebbero risolvere il problema posto: estrazioni di caratteristiche visive (e classificazione) e l'OCR.
 
-\paragraph{Estrazione \textit{features} e classificazione} Come si vede nell'immagine \ref{ms-analyze}, il contenuto viene classificato come \textit{text menu} con un livello di \textit{confidence} dell'$85,5\%$.
+\paragraph{Estrazione \textit{features} e classificazione} Come si vede nell'immagine ~\ref{ms-analyze}, il contenuto viene classificato come \textit{text menu} con un livello di \textit{confidence} dell'$85,5\%$.
 \begin{figure}[htbp]
 \begin{center}
 	\includegraphics[height=.3\textwidth]{img/scontrino.jpg}
@@ -185,7 +185,24 @@ Dalla figura si vede come l'algoritmo sia riuscito a rilevare molte parole (ma n
 
 In conclusione non si ritiene il risultato sufficiente per lo scopo prefissato. 
 
-%%\subsection{Riassunto}
+\section{Tabella riassuntiva}
+\begin{table}[h!]
+\centering
+\caption{Tabella riassuntiva dei servivi analizzati}
+\label{ms-cs}
+\begin{tabular}{l|l|l|l}
+\toprule
+                           & Caratteristiche & Tariffe (dollari/chiamata) & Risultato nelle prove \\ \hline
+\midrule
+% Microsoft                          
+\multicolumn{1}{l|}{Microsoft CS}
+& Tagging, OCR
+& \begin{tabular}{@{}c@{}}Gratis: 5000 chiamate/mese, 20 chiamate/minuto \\ Standard: $0,015$, max 10 TPS \end{tabular} 
+& Non soddisfacente 
+\\ \hline
+% 
+\end{tabular}
+\end{table}
 
 
 %%%%%%%%%%%%
