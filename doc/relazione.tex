@@ -16,7 +16,9 @@
 \setlength\abovecaptionskip{.4em}
 \setlength\belowcaptionskip{.8em}
 \usepackage{hyperref}
-\usepackage{titlesec}  
+\usepackage{titlesec}
+\usepackage{rotating,booktabs}
+\def\MC#1{\multicolumn{1}{c}{#1}}
 
 
 %\usepackage{titlesec}
@@ -111,10 +113,11 @@ Le maggiori piattaforme per il \textit{Cognitive Computing} sono offerte da alcu
 \subsection{Panoramica}
 \paragraph{Prerequisiti}
 \begin{itemize}
-\item Input: dati grezzi (stream application/octet) o url;
-\item Formati supportati: JPEG, PNG, GIF, BMP;
-\item Dimensione file massima: 4 MB;
-\item Dimensione immagine minima: 50x50 pixel. 
+\item Credenziali per accedere al servizio (API key).
+\item Input: dati grezzi (stream application/octet) o url.
+\item Formati supportati: JPEG, PNG, GIF, BMP.
+\item Dimensione file massima: 4 MB.
+\item Dimensione immagine minima: 50x50 pixel.
 \end{itemize}
 %
 
@@ -187,29 +190,55 @@ In conclusione non si ritiene il risultato sufficiente per lo scopo prefissato.
 %% Microsoft
 \section{IBM Developer Cloud: Visual Recognition}
 \subsection{Panoramica}
-\paragraph{Prerequisiti}
+Il servizio di Visual Recognition\footnote{\url{https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/}} utilizza tecniche e algoritmi di \textit{deep learning} per identificare scene, oggetti, visi di persone nell'immagine che viene fornita come input al servizio. Permette, inoltre, la creazione e l'addestramento di un classificatore personalizzato per l'identificazione di elementi in base alle necessità dello sviluppatore.
 
-Le API\footnote{\url{https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/}} sono molteplici,
+\paragraph{Requisiti}
+\begin{itemize}
+\item Credenziali per accedere al servizio (API key).
+\item input: dati grezzi o URL all'immagine.
+\item formati supportati: JPG, PNG.
+\item dimensioni minime: 224x224 pixel (consigliate).
+\end{itemize}
+
+\paragraph{Classificazione} Per ogni immagine sottoposta a classificazione viene fornito in riposa una lista di classe-punteggio per ogni classificatore selezionato. Il punteggio è compreso in un intervallo $0-1$, dove un valore maggiore indica una probabilità più alta che la classe descriva l'immagine; la soglia di default perché un valore sia ritornato da un classificatore è $0,5$. Le lingue sopportate\footnote{Al momento della stesura di questo documento.} nella risposta sono l'inglese, spagnolo, arabo o giapponese.
+
+\paragraph{Riconoscimento dei volti} Analizza i volti presenti l'immagine e ne deriva alcune informazioni, come età stimata, sesso o nome del personaggio famoso (nel caso ci sia). Anche in questo caso viene fornito un punteggio (nell'intervallo $0-1$) atto ad indicare una maggiore probabilità di correlazione.
 
 %% Tabella
 \section{Tabella riassuntiva}
-\begin{table}[h!]
+
+\begin{sidewaystable}
+{\footnotesize
 \centering
 \caption{Tabella riassuntiva dei servivi analizzati}
 \label{ms-cs}
-\begin{tabular}{l|l|l|l}
+%\begin{tabular}{l|l|l|l|l|l}
+\medskip
+\resizebox{\linewidth}{!}{%
+\tabcolsep=2pt
+\begin{tabular}{{l|l|l|l|l|l}}
 \toprule
-                           & Caratteristiche & Tariffe (dollari/chiamata) & Risultato nelle prove \\ \hline
+Fornitore & Input & Formati & Caratteristiche & Piano gratuito & Tariffe (dollari/chiamata) \\ \hline
 \midrule
 % Microsoft                          
 \multicolumn{1}{l|}{Microsoft CS}
-& Tagging, OCR
-& \begin{tabular}{@{}c@{}}Gratis: 5000 chiamate/mese, 20 chiamate/minuto \\ Standard: $0,015$, max 10 TPS \end{tabular} 
-& Non soddisfacente 
-\\ \hline
-% 
+& raw, URL
+& jpeg, png, gif, bmp 
+& \begin{tabular}{@{}c@{}}
+Tagging, Classificazione, OCR, Identificazione colori e B/N,\\
+Gen. descrizioni, Contenuti per adulti
 \end{tabular}
-\end{table}
+& 5000 chiamate/mese
+& $0,015$, max 10 TPS \\ \hline
+% IBM
+\multicolumn{1}{l|}{IBM VS}
+& raw, URL
+& jpeg, png
+& Classificazione (anche custom), riconoscimento volti, 
+& -
+& - \\ \hline
+\end{tabular}}}
+\end{sidewaystable}
 
 
 
