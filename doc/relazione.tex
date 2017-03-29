@@ -220,7 +220,7 @@ Per le immagini d'esempio negative si potrebbero utilizzare immagini di verdure.
 Il piano gratuito prevede la possibilità di:
 \begin{enumerate}
 \item classificare 250 immagini al giorno,
-\item addestrare un classificatore personalizzato con massimo 5000 immagini.
+\item addestrare un solo classificatore personalizzato con massimo 5000 immagini.
 \end{enumerate}
 Il piano \textit{standard} prevede:
 \begin{enumerate}
@@ -244,7 +244,7 @@ Il piano \textit{standard} prevede:
 \label{ms-cs}
 %\begin{tabular}{l|l|l|l|l|l}
 \medskip
-\resizebox{\linewidth}{!}{%
+\resizebox{\textheight}{!}{%
 \tabcolsep=2pt
 \begin{tabular}{{l|l|l|l|l|l}}
 \toprule
@@ -264,9 +264,16 @@ Gen. descrizioni, Contenuti per adulti
 \multicolumn{1}{l|}{IBM VS}
 & raw, URL
 & jpeg, png
-& Classificazione (anche custom), riconoscimento volti, 
-& -
-& - \\ \hline
+& Classificazione (anche custom), riconoscimento volti, Collezioni
+& \begin{tabular}{@{}c@{}}
+7500 immagini/mese\footnote{In realtà il conteggio è giornaliero.}\\
+1 classificatore addestrato con 5000 imm. max
+\end{tabular}
+& \begin{tabular}{@{}c@{}}
+$0,002$ - $0,004$ (classificazione)\\
+$0,10$ a immagine (addestramento)
+\end{tabular}
+\\ \hline
 \end{tabular}}}
 \end{sidewaystable}
 
