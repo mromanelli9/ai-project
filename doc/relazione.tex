@@ -88,22 +88,22 @@ Questo perché, ad esempio, un'azienda potrebbe aver bisogno di un sistema che p
 
 Per ogni soluzione si effettueranno alcune prove in relazione al contesto appena descritto, analizzandone pregi e difetti, tenendo ovviamente in considerazione la natura limitata delle stesse.
 
+Tutto il codice a cui si fa riferimento si può trovare nel repository online\cite{ai-repo}.
+
 
 %%%%%%%%%%%%
 {\let\clearpage\relax \chapter{Cognitive Computing}}
 \section{Introduzione}
 % TODO
 
-
 \section{Servizi disponibili}
 Le maggiori piattaforme per il \textit{Cognitive Computing} sono offerte da alcune fra le maggiori aziende nell'ambito informatico e tecnologico e sono:
 \begin{itemize}
-\item Microsoft Cognitive Services\cite{mcs-link} (Microsoft Corporation),
-\item Watson Developer Cloud (IBM: International Business Machines Corporation),
-\item Amazon Artificial Intelligence (Amazon.com, Inc)
+\item Microsoft Cognitive Services \cite{mcs-link} (Microsoft Corporation),
+\item Watson Developer Cloud \cite{ibm-link} (IBM: International Business Machines Corporation),
+\item Amazon Artificial Intelligence \cite{amazon-link} (Amazon.com, Inc)
 \item Google Cloud Platform (Google Inc.)
 \end{itemize}
-
 
 
 %%%%%%%%%%%%
@@ -121,7 +121,7 @@ Le maggiori piattaforme per il \textit{Cognitive Computing} sono offerte da alcu
 \end{itemize}
 %
 
-Le API\footnote{\url{https://www.microsoft.com/cognitive-services/en-us/computer-vision-api}} sono molteplici, a seconda dello scopo finale dell'analisi visiva.
+Le API\cite{mcs-api} sono molteplici, a seconda dello scopo finale dell'analisi visiva.
 
 \paragraph{Tagging} Le API ritornano un insieme di etichette (in formato JSON) che descrivono gli oggetti presenti nell'immagine, come oggetti, esseri viventi, azioni, paesaggi; per ogni etichetta viene anche fornito il livello di \textit{confidence} (affidabilità). I tag non sono in alcun modo organizzati fra loro e non esiste nessun tipo di ereditarietà.
 Nel caso un tag sia ambiguo viene fornito in aggiunta un \textit{hint} che ne spiega il contenuto.
@@ -190,7 +190,7 @@ In conclusione non si ritiene il risultato sufficiente per lo scopo prefissato.
 %% Microsoft
 \section{IBM Developer Cloud: Visual Recognition}
 \subsection{Panoramica}
-Il servizio di Visual Recognition\footnote{\url{https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/}} utilizza tecniche e algoritmi di \textit{deep learning} per identificare scene, oggetti, visi di persone nell'immagine che viene fornita come input al servizio. Permette, inoltre, la creazione e l'addestramento di un classificatore personalizzato per l'identificazione di elementi in base alle necessità dello sviluppatore.
+Il servizio di Visual Recognition\cite{ibm-api} utilizza tecniche e algoritmi di \textit{deep learning} per identificare scene, oggetti, visi di persone nell'immagine che viene fornita come input al servizio. Permette, inoltre, la creazione e l'addestramento di un classificatore personalizzato per l'identificazione di elementi in base alle necessità dello sviluppatore.
 
 \paragraph{Requisiti}
 \begin{itemize}
@@ -232,52 +232,97 @@ Il piano \textit{standard} prevede:
 
 
 \subsection{Esecuzione}
+%TODO
+
+%% AMAZON
+\section{Amazon Artificial Intelligence: Amazon Rekognition}
+\subsection{Panoramica}
+\paragraph{Prerequisiti}
+\begin{itemize}
+\item Credenziali per accedere al servizio.
+\item Input: dati grezzi.
+\item Formati supportati: JPEG, PNG.
+\item Dimensione file massima: 15 MB.
+\item Dimensione immagine minima: 80 pixel.
+\end{itemize}
+%
+
+\subsection{Tariffe}
+Il piano gratuito prevede, per i primi 12 mesi, di:
+\begin{itemize}
+\item analizzare 5000 immagini,
+\item memorizzare 1000 metadati facciali al mese.
+\end{itemize}
+Altrimenti:
+\begin{itemize}
+\item per il primo milione di immagini\footnote{Ogni API che accetta una o più messaggi di input conta come un'immagine elaborata.}: $1$ dollaro ogni $1000$ immagini\footnote{Al mese.};
+\item successivi 9 milioni di immagini: $0,80$ dollari ogni $1000$ immagini;
+\item successivi 90 milioni di immagini: $0,60$ dollari ogni $1000$ immagini;
+\item oltre i 100 milioni di immagini: $0,40$ dollari ogni $1000$ immagini.
+\end{itemize}
+Inoltre utilizzando le API per il riconoscimento dei volti, il servizio memorizza ogni volta la rappresentazione vettoriale dei volti. Questo comporta dei costi pari a $0,01$ dollari per 1000 metadati memorizzati al mese.  
 
 
 %% Tabella
-\section{Tabella riassuntiva}
-
-\begin{sidewaystable}
-{\footnotesize
+\section{Tabelle riassuntive}
+\begin{table}[!h]
 \centering
-\caption{Tabella riassuntiva dei servivi analizzati}
-\label{ms-cs}
-%\begin{tabular}{l|l|l|l|l|l}
+\caption{Analisi delle funzionalità}
+\label{tab-riass-funzionalita}
 \medskip
-\resizebox{\textheight}{!}{%
+\resizebox{\textwidth}{!}{%
 \tabcolsep=2pt
-\begin{tabular}{{l|l|l|l|l|l}}
+\begin{tabular}{l|c|c|c|c}
 \toprule
-Fornitore & Input & Formati & Caratteristiche & Piano gratuito & Tariffe (dollari/chiamata) \\ \hline
-\midrule
-% Microsoft                          
-\multicolumn{1}{l|}{Microsoft CS}
-& raw, URL
-& jpeg, png, gif, bmp 
+Funzionalità & Microsoft Computer Vision & IBM Visual Recognition & Amazon Rekognition & Google ?\\ \hline
+\midrule                           
+\multicolumn{1}{l|}{Riconoscimento oggetti / Tagging} & \checkmark & \checkmark &  \\ \hline
+\multicolumn{1}{l|}{Classificazione} & \checkmark & \checkmark &  &  \\ \hline
+\multicolumn{1}{l|}{Creazione di un classificatore} & & \checkmark &  &  \\ \hline
+\multicolumn{1}{l|}{Riconoscimento colori} & \checkmark &  &  &  \\ \hline
+\multicolumn{1}{l|}{Riconoscim. tipo imm.} & \checkmark &  &  & \\ \hline
+\multicolumn{1}{l|}{Riconoscimento volti} & \checkmark & \checkmark &  & \\ \hline
+\multicolumn{1}{l|}{Riconoscimento celebrità} & \checkmark & \checkmark &  & \\ \hline
+\multicolumn{1}{l|}{Generazione descrizioni} & \checkmark &  &  & \\ \hline
+\multicolumn{1}{l|}{Riconoscimento nudità} & \checkmark&  &  & \\ \hline
+\multicolumn{1}{l|}{Riconoscimento del testo (OCR)} & \checkmark &  &  & \\ \hline
+\multicolumn{1}{l|}{Creazione anteprime} & \checkmark &  &  & \\ \hline
+\multicolumn{1}{l|}{Ricerca di immagini} & & \checkmark &  solo volti & \\ \hline
+\multicolumn{1}{l|}{Confronto fra immagini} & & \checkmark & & \\ \hline
+\end{tabular}}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\caption{Analisi delle tariffe}
+\label{tab-riass-tariffe}
+\medskip
+\resizebox{\textwidth}{!}{%
+\tabcolsep=2pt
+\begin{tabular}{l|c|c|c|c}
+\toprule
+Tipologia di piani & Microsoft Computer Vision & IBM Visual Recognition & Amazon Rekognition & Google ?\\ \hline
+\midrule                           
+\multicolumn{1}{l|}{Gratuito [chiamate/mese]}
+& 5000
 & \begin{tabular}{@{}c@{}}
-Tagging, Classificazione, OCR, Identificazione colori e B/N,\\
-Gen. descrizioni, Contenuti per adulti
-\end{tabular}
-& 5000 chiamate/mese
-& $0,015$, max 10 TPS \\ \hline
-% IBM
-\multicolumn{1}{l|}{IBM VS}
-& raw, URL
-& jpeg, png
-& Classificazione (anche custom), riconoscimento volti, Collezioni
-& \begin{tabular}{@{}c@{}}
-7500 immagini/mese\footnote{In realtà il conteggio è giornaliero.}\\
+7500 immagini/mese\footnote{Con limite giornaliero di 250.}\\
 1 classificatore addestrato con 5000 imm. max
 \end{tabular}
+&
+& 
+\\ \hline
+\multicolumn{1}{l|}{Standard [dollari/chiamata]}
+& $0,015$
 & \begin{tabular}{@{}c@{}}
 $0,002$ - $0,004$ (classificazione)\\
 $0,10$ a immagine (addestramento)
 \end{tabular}
+& da $0,001$ a $0,0004$
+&
 \\ \hline
-\end{tabular}}}
-\end{sidewaystable}
-
-
+\end{tabular}}
+\end{table}
 
 
 
