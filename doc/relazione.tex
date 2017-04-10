@@ -17,14 +17,16 @@
 \setlength\belowcaptionskip{.8em}
 \usepackage{hyperref}
 \usepackage{titlesec}
-\usepackage{rotating,booktabs}
-\def\MC#1{\multicolumn{1}{c}{#1}}
+\usepackage{tabularx}
+\usepackage{array}
+\newcolumntype{?}[1]{!{\vrule width #1}}
+%\usepackage{rotating,booktabs}
+%\def\MC#1{\multicolumn{1}{c}{#1}}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \newcommand\HRule{\rule{\textwidth}{1pt}}
 \newcommand\LRule{\rule{\textwidth}{.5pt}}
 \newcommand\DRule{\rule{\textwidth}{.4pt}\\[\dimexpr-\baselineskip+1mm+2pt] \rule{\textwidth}{2pt}}
-
 \usepackage{titlesec}
 \titleformat{\chapter}[hang]
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter:}{.3em}{} 
@@ -83,7 +85,7 @@
 
 % BIBLIOGRAFIA
 \bibliography{biblio.bib}
-\bibliographystyle{alpha} % oppure abbrv
+\bibliographystyle{ieeetr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 
