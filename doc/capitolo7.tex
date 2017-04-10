@@ -5,7 +5,7 @@
 {\tiny
 \begin{tabularx}{\linewidth}{l?c|c|c|c}
 \toprule
-Funzionalità & Microsoft Computer Vision & IBM Visual Recognition & Amazon Rekognition & Google Vision API \\ \hline
+Funzionalità & Microsoft Computer Vision & IBM Visual Recognition & Amazon Rekognition & Google Vision \\ \hline
 \midrule                           
 \multicolumn{1}{l?}{Riconoscimento oggetti / Tagging} & \checkmark & \checkmark &  \\ \hline
 \multicolumn{1}{l?}{Classificazione} & \checkmark & \checkmark &  &  \\ \hline
@@ -23,4 +23,34 @@ Funzionalità & Microsoft Computer Vision & IBM Visual Recognition & Amazon Reko
 \end{tabularx}}
 \caption{Analisi delle funzionalità}
 \label{tab-riass-funzionalita}
+\end{table}
+
+\begin{table}[!h]
+\centering
+{\tiny
+\begin{tabularx}{\textwidth}{l?c|c|c|c}
+\toprule
+Tipologia di piani & Microsoft Computer Vision & IBM Visual Recognition & Amazon Rekognition & Google Vision\\ \hline
+\midrule                           
+\multicolumn{1}{l?}{Gratuito [chiamate/mese]}
+& 5000
+& \begin{tabular}{@{}c@{}}
+7500 immagini/mese\footnote{Con limite giornaliero di 250.}\\
+1 classificatore con 5000 imm. max
+\end{tabular}
+& -
+& -
+\\ \hline
+\multicolumn{1}{l?}{Standard [dollari/chiamata]}
+& $0,015$
+& \begin{tabular}{@{}c@{}}
+$0,002$ - $0,004$ (classificazione)\\
+$0,10$ a immagine (addestramento)
+\end{tabular}
+& da $0,001$ a $0,0004$
+& - 
+\\ \hline
+\end{tabularx}}
+\caption{Analisi delle tariffe}
+\label{tab-riass-tariffe}
 \end{table}
