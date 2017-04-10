@@ -3,16 +3,21 @@ This is the project for Artificial Intelligence course at the University of Pado
 
 ## Getting Started
 ### Prerequisites
-Java
+LaTeX, python
 
 ### Installing
-Download source code, then lunch the main class.
+First, clone this repo:
 ```
-java Main
+git clone https://gitlab.com/mromanelli/ai-project
+```
+Then compile the report:
+```
+cd ai-project/doc
+pdflatex relazione.tex
 ```
 
 ## Contributors
-- None -
+- None
 
 ## License
 
