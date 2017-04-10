@@ -1,2 +1,35 @@
-% MICROSOFT
-\section{Microsoft Cognitive Services: Computer Vision API}
+% IBM
+\section{IBM Developer Cloud: Visual Recognition}
+Il servizio di Visual Recognition\cite{ibm-api} utilizza tecniche e algoritmi di \textit{deep learning} per identificare scene, oggetti, visi di persone nell'immagine che viene fornita come input al servizio. Permette, inoltre, la creazione e l'addestramento di un classificatore personalizzato per l'identificazione di elementi in base alle necessità dello sviluppatore.
+
+\paragraph{Classificazione} Per ogni immagine sottoposta a classificazione viene fornito in riposa una lista di coppie classe-punteggio per ogni classificatore selezionato. Il punteggio è compreso in un intervallo $0-1$, dove un valore maggiore indica una probabilità più alta che la classe descriva l'immagine; la soglia di default perché un valore sia ritornato da un classificatore è $0,5$.
+Le classi sono organizzate in categorie e sotto-categorie dove il livello più astratto comprende categorie quali animali, persone, cibo, sport, natura, eccetera.
+
+Le lingue sopportate\footnote{Al momento della stesura di questo documento.} nella risposta sono l'inglese, spagnolo, arabo o giapponese. 
+
+\paragraph{Riconoscimento dei volti} Analizza i volti presenti l'immagine e ne deriva alcune informazioni, come età stimata, sesso o nome del personaggio famoso (nel caso ci sia). Anche in questo caso viene fornito un punteggio (nell'intervallo $0-1$) atto ad indicare una maggiore probabilità di correlazione.
+
+\paragraph{Classificatore personalizzato} Permette di creare un nuovo classificatore e di addestrarlo su un dato insieme di immagini. Queste sono inviate in un file compresso e devono comprendere o due immagini d'esempio positive o una positiva e una negativa. L'insieme contente le immagini d'esempio positive serve a creare le classi che definiscono il nuovo classificatore. Il complementare definisce invece quello che il classificatore \textit{non} deve essere; le immagini d'esempio negative non devono contente i soggetti presenti nelle immagini positive.
+
+Se, ad esempio, si volesse creare un classificatore ``frutta'' si potrebbe utilizzare un file compresso contente immagini di pere, uno contente immagini di mele e uno con immagini di banane.
+Per le immagini d'esempio negative si potrebbero utilizzare immagini di verdure.
+
+\paragraph{Collezioni} Questa funzione\footnote{Questa funzione è ancora in fase BETA} permette di creare una nuova collezione, aggiungere immagini a questa e utilizzare la \textit{Similarity Search} per cercare immagini simile all'interno della collezione.
+
+\paragraph{Note per la privacy} Per default, tutte le immagini e le informazioni inviate vengono salvate e utilizzate per migliorare il servizio. Per evitare questo è necessario impostare diversamente il parametro \textsf{X-Watson-Learning-Opt-Out} in ogni richiesta inviata.
+
+\subsection{Tariffe}
+Il piano gratuito prevede la possibilità di:
+\begin{enumerate}
+\item classificare 250 immagini al giorno,
+\item addestrare un solo classificatore personalizzato con massimo 5000 immagini.
+\end{enumerate}
+Il piano \textit{standard} prevede:
+\begin{enumerate}
+\item per la classificazione: $0,002$ dollari a immagine,
+\item per il riconoscimento volti: $0,004$ dollari a immagine,
+\item per l'addestramento classificatore: $0,10$ dollari a immagine,
+\item per la classificazione con classificatore personalizzato: $0,004$ dollari a immagine.
+\end{enumerate}
+
+
