@@ -1,4 +1,70 @@
 % PANORAMICA
 \section{Panoramica}
+Molte fra le maggiori aziende nel settore tecnologico e informatico hanno cominciato a offrire servizi cognitivi.
+% Da migliorare
+%
+Fra queste ne sono state individuate quattro, che offrono un'ampia gamma di sevizi, tariffe diversificate in base all'esigenza e la possibilità di sopportare carichi di lavoro molto ingenti.
+I servizi presi in esame saranno, quindi:
+\begin{itemize}
+\item Microsoft Cognitive Services \cite{mcs-link} (Microsoft Corporation),
+\item Watson Services (Bluemix) \cite{ibm-link} (IBM: International Business Machines Corporation),
+\item Amazon Artificial Intelligence \cite{amazon-link} (Amazon.com, Inc)
+\item Google Cloud Machine Learning Services \cite{google-link} (Google Inc.)
+\end{itemize}
 
-%\subsection{Scopo del progetto}
+Ognuna di queste suddivide i servizi in macro aeree che possono essere riassunte così: visione artificiale, sintesi vocale, linguaggio naturale, ricerca, tecniche di apprendimento e altro.
+Non tutte le piattaforme utilizzando la stessa nomenclatura e i servivi al loro interno possono variare leggermente, ma le aree di interesse coperte sono più o meno queste.
+L'area denominata \textit{visione artificiale} include riconoscimento visivo di immagini e video, estrazione di informazioni, riconoscimento volti ed emozioni.
+Con \textit{sintesi vocale} vengono indicati quei servizi atti all'elaborazione dell'audio e alla sua trasformazione in testo o in strutture dati adatte all'analisi.
+L'area \textit{linguaggio} permette di analizzare ed elaborare il linguaggio naturale, come ad esempio comprendere comandi ed estrapolare informazioni importanti da un dato contesto.
+La \textit{ricerca} permette di sfruttare le potenzialità del motore di ricerca offerto dalla compagnia stessa (se presente) o di eseguire ricerche avanzate all'interno di collezioni creati appositamente.
+\textit{Tecniche di apprendimento} permette la fruizione di algoritmi e modelli, oltre che alla loro creazione, per l'apprendimento automatico ed approfondito.
+La macro area \textit{altro} comprende tutti quei servizi che non ricadono nelle aree precedentemente descritte, come ad esempio sistemi di raccomandazione o altro.
+Infine, la tabella \ref{tab-macro-aree} riassume con i servivi offerti (ad alto livello) da ogni piattaforma, inseriti nelle macro aree di riferimento.
+
+E' necessario aggiungere, tuttavia, che questa classificazione vuole fornire solamente una visone generale e grandi linee dei servizi disponibili e non vuole essere esaustiva.
+Per l'offerta completa si rimanda alle rispettive documentazioni. Inoltre, l'assenza di voci in una macro area per una certa piattaforma non esclude la presenza di relativi servizi; potrebbero essere, infatti, presenti sotto altri nomi, piattaforme, framework o comunque presenti negli altri servizi.
+%
+%
+\begin{table}[!h]
+\centering
+{\scriptsize
+\begin{tabularx}{.9\textwidth}{l|X|X|X|X}
+\toprule
+Aree & Microsoft Corporation & IBM & Amazon.com, Inc & Google Inc.\\ \hline
+\midrule                           
+\multicolumn{1}{l|}{Visione artificiale}
+& Computer Vision API, Content Moderator, Emotion API, Face API, Video API
+& Visual Recognition
+& Amazon Rekognition
+& Video Intelligence API, Vision API \\ \hline
+\multicolumn{1}{l|}{Sintesi vocale}
+& Bing Speech API, Custom Speech Service, Speaker Recognition API
+& Speech to Text, Text To Speech
+& Amazon Polly
+& Speech API \\ \hline
+\multicolumn{1}{l|}{Linguaggio naturale}
+& Bing Spell Check API, Language Understanding Intelligent Service, Linguistic Analysis API, Text Analytics API, Translator API, Web Language Model API
+& AlchemyLanguage, Conversation, Dialog, Document Conversion, Language Translator, Natural Language Classifier, Natural Language Understanding, Personality Insights, Retrieve and Rank, Tone Analyzer
+& Amazon Lex
+& Natural Language API, Translation API \\ \hline
+\multicolumn{1}{l|}{Ricerca}
+& Bing Autosuggest API, Bing Image Search API, Bing News Search API, Bing Video Search API, Bing Web Search API, Academic Knowledge API, Knowledge Exploration Service
+& Discovery, Discovery News, 
+& -
+& - \\ \hline
+\multicolumn{1}{l|}{Apprendimento}
+& -
+& -
+& Amazon Machine Learning, Apache Spark su Amazon EMR
+& Machine Learning Engine \\ \hline
+\multicolumn{1}{l|}{Altro}
+& Entity Linking Intelligence Service, QnA Maker, Recommendations API
+& Tradeoff Analytics
+& -
+& Jobs API \\ \hline
+\end{tabularx}}
+\caption{Tabella riassuntiva dei servizi offerti, raggruppati per macro aree}
+\label{tab-macro-aree}
+\end{table}
+%
