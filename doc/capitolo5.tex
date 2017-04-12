@@ -3,6 +3,20 @@
 Amazon Rekognition \cite{amazon-api} è il servizio di Amazon che permette di riconoscere oggetti, volti, scene, nelle immagini e molto altro.
 Inoltre permette l'integrazione con le altre piattaforme offerte da Amazon, come Amazon S3, AWS Lambda e altri servizi AWS.
 
+\subsection{Prerequisiti}
+Caratteristiche immagini:
+\begin{itemize}
+\item Formati supportati: PNG, JPEG.
+\item Caratteristiche minime: 80x80 pixel. 
+\item Dimensione massima: 5 MB (dati grezzi), 15 MB (oggetto Amazon S3).
+\item Massimo numero di immagini per collezione: un milione.
+\end{itemize}
+Altro:
+\begin{itemize}
+\item Disponibilità: Stati Uniti orientali, Stati Uniti occidentali, Europa.
+\end{itemize}
+
+\subsection{Analisi}
 Prima di descrivere cosa si può fare o meno con Amazon Rekognition, è necessaria fare una distinzione; le operazioni fornite dal servizio si suddividono in due categorie:
 \begin{itemize}
 \item Operazioni volatili (Non-storage API operations): le operazioni in questo gruppo non salvano alcuna informazione sui server Amazon.
@@ -13,10 +27,26 @@ Ad esempio nella ricerca di un volto viene salvata la rappresentazione vettorial
 \paragraph{Rilevamento scene e oggetti} Permette di rilevare automaticamente oggetti, come ad esempio veicoli, alberi, animali e con il relativo punteggio
 (\textit{confidence score}) che ne indica il grado di affidabilità (probabilità che sia corretto).
 Permette, inoltre, il riconoscimento di scene (una spiaggia o un tramonto), eventi (matrimoni, feste di compleanno) e concetti astratti (serata, paesaggio, natura).
-Questa operazione (\textit{DetectLabels}) non salva alcuna informazione sul server.
+%Questa operazione (\textit{DetectLabels}) non salva alcuna informazione sul server.
 
+\paragraph{Analisi volti} Permette il riconoscimento di volti all'interno dell'immagine, la loro localizzazione spaziale e l'analisi di attributi facciali come
+il sesso, l'eta, emozioni, se la persona sta sorridendo, se ha gli occhi aperti, presenza o assenza di barba/baffi, eccetera
+\footnote{Per una lista esaustiva si faccia riferimento alla documentazione ufficiale all'indirizzo: \url{http://docs.aws.amazon.com/rekognition/latest/dg/API_Types.html}.}.
+La localizzazione avviene tramite un immaginario rettangolo (sotto forma di coordinate $(x, y)$ degli angoli) che circonda ogni viso rilevato e dei punti di rifermento su elementi come il naso,
+gli occhi, le orecchie, la bocca, ecc.
+Naturalmente, gli algoritmi di riconoscimento sono più affidabili in presenza di visi rivolti frontalmente e potrebbero non riconoscere (o farlo con un punteggio inferiore) visi oscurati
+o se rivolti non frontalmente.
+%Questa operazione (\textit{DetectFaces}) non salva alcuna informazione sul server.
 
+\paragraph{Confronto volti} A differenza del metodo precedente, questo permette di misurare la probabilità che due volti siano la stessa persona; un punteggio associato ad ogni confronto
+aiuta a valutarne il risultato.
+Da un'immagine \textit{sorgente} contente un volto, questo viene confrontato con il volti presente nelle immagini \textit{destinazione}.
+Anche in questo caso vengono forniture le coordinate spaziali di un immaginario rettangolo che circonda i visi che sono stati rilevati, assieme al grado di sicurezza che quel rettangolo contenga veramente un volto.
+%Questa operazione (\textit{CompareFaces}) non salva alcuna informazione sul server.
 
+\paragraph{Riconoscimento volti} Per trovare un volto all'interno di una collezione di immagini. Per prima cosa è necessaria la creazione di una collezione per il salvataggio dei volti, rappresentati come vettore di attributi.
+Successivamente si fornisce al servizio un'immagine che provvederà alla ricerca di volti simili all'interno della collezione precedentemente creata.
+Per ogni volto restituito viene associato, al solito, un livello di affidabilità la posizione del volto all'interno dell'immagine.
 
 
 \subsection{Tariffe}
