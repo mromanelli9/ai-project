@@ -11,7 +11,8 @@ In tabella \ref{tab-riass-tariffe} vengono illustrate le tariffe per ogni serviz
 \toprule
 Funzionalità & Microsoft Computer Vision & IBM Visual Recognition & Amazon Rekognition & Google Vision \\ \hline
 \midrule                           
-\multicolumn{1}{l?}{Riconoscimento oggetti / Tagging} & \checkmark & \checkmark & \checkmark &  \\ \hline
+\multicolumn{1}{l?}{Riconoscimento oggetti} & \checkmark & \checkmark & \checkmark &  \\ \hline
+\multicolumn{1}{l?}{Riconoscimento scene} & \checkmark & \checkmark & \checkmark &  \\ \hline
 \multicolumn{1}{l?}{Classificazione} & \checkmark & \checkmark & &  \\ \hline
 \multicolumn{1}{l?}{Creazione di un classificatore} & & \checkmark & &  \\ \hline
 \multicolumn{1}{l?}{Riconoscimento colori} & \checkmark &  &  &  \\ \hline
@@ -71,9 +72,10 @@ $0,10$ a immagine (addestramento)
 \toprule
 Funzionalità & Microsoft Computer Vision & IBM Visual Recognition & Amazon Rekognition & Google Vision \\ \hline
 \midrule                  
-\multicolumn{1}{l?}{Formati supportati} & & & PNG, JPEG &  \\ \hline         
-\multicolumn{1}{l?}{Dimensione minima} &  &  & 80x80 pixel &  \\ \hline
-\multicolumn{1}{l?}{Dimensione massima} & & & 5MB/15MB &  \\ \hline
+\multicolumn{1}{l?}{Metodi di input} & raw, url & raw, url & raw, oggetto Amazon S3 &  \\ \hline         
+\multicolumn{1}{l?}{Formati supportati} & JPEG, PNG, GIF, BMP & PNG, JPEG & PNG, JPEG &  \\ \hline         
+\multicolumn{1}{l?}{Dimensione minima [pixel]} & 50x50 & 224x224 & 80x80 &  \\ \hline
+\multicolumn{1}{l?}{Dimensione massima [MB]} & 4 & 2 & 5 o 15 &  \\ \hline
 \end{tabularx}}
 \caption{Caratteristiche delle immagini fornite alle API}
 \label{tab-riass-immagini}
