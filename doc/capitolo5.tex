@@ -1,6 +1,23 @@
 % AMAZON
 \section{Amazon Artificial Intelligence: Amazon Rekognition}
-%TODO
+Amazon Rekognition \cite{amazon-api} è il servizio di Amazon che permette di riconoscere oggetti, volti, scene, nelle immagini e molto altro.
+Inoltre permette l'integrazione con le altre piattaforme offerte da Amazon, come Amazon S3, AWS Lambda e altri servizi AWS.
+
+Prima di descrivere cosa si può fare o meno con Amazon Rekognition, è necessaria fare una distinzione; le operazioni fornite dal servizio si suddividono in due categorie:
+\begin{itemize}
+\item Operazioni volatili (Non-storage API operations): le operazioni in questo gruppo non salvano alcuna informazione sui server Amazon.
+\item Operazioni persistenti (Storage-based API operations): l'utilizzo di queste operazioni comporta il salvataggio di alcuni metadati sui server.
+Ad esempio nella ricerca di un volto viene salvata la rappresentazione vettoriale dei volti rilevati (mentre l'immagine di partenza no).
+\end{itemize}
+
+\paragraph{Rilevamento scene e oggetti} Permette di rilevare automaticamente oggetti, come ad esempio veicoli, alberi, animali e con il relativo punteggio
+(\textit{confidence score}) che ne indica il grado di affidabilità (probabilità che sia corretto).
+Permette, inoltre, il riconoscimento di scene (una spiaggia o un tramonto), eventi (matrimoni, feste di compleanno) e concetti astratti (serata, paesaggio, natura).
+Questa operazione (\textit{DetectLabels}) non salva alcuna informazione sul server.
+
+
+
+
 
 \subsection{Tariffe}
 Il piano gratuito prevede, per i primi 12 mesi, di:
