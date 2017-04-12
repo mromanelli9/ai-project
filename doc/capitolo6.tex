@@ -1,0 +1,48 @@
+% GOOGLE
+\section{Google Cloud Machine Learning Services: Cloud Vision API}
+%TODO 
+% \cite{google-api}
+
+\subsection{Prerequisiti}
+Le immagini passate al servizio devono rispettare i seguenti requisiti:
+\begin{itemize}
+\item Metodo: %dati grezzi (stream application/octet) o oggetto Amazon S3.
+\item Formati supportati: %PNG, JPEG.
+\item Caratteristiche minime: %80x80 pixel. 
+\item Dimensione massima: 4 MB.
+\end{itemize}
+Altro:
+\begin{itemize}
+\item Disponibilità: %Stati Uniti orientali, Stati Uniti occidentali, Europa.
+\end{itemize}
+
+\subsection{Analisi}
+%TODO 
+
+\subsection{Tariffe}
+La Cloud Vision API fornisce diversi metodi per analizzare un'immagine.
+Ad ogni metodo corrisponde una tariffa che viene applicata ad ogni utilizzo su un'immagine, chiamato \textit{unità};
+se, ad esempio, due metodi sono applicati alla stessa immagine allora ai fini tariffari verranno conteggiati separatamente.
+Il prezzo è determinato dal numero di unità per mese e il costo per ogni metodo è indicato per 1000 unità/mese in dollari, come indicato in tabella \ref{google-tariffe}.
+
+\begin{table}[!h]
+\centering
+{\tiny
+\begin{tabularx}{\linewidth}{l?c|c|c|c}
+\toprule
+Metodo & 1-1 000 unità/mese & 1 001-1 000 000 unità/mese & 1 000 001-5 000 000 unità/mese & 5 000 001-20 000 000 unità/mese \\ \hline
+\midrule                           
+\multicolumn{1}{l?}{\textsf{Label Detection}} & Gratis & 1,50 & 1,50 & 1,00 \\ \hline
+\multicolumn{1}{l?}{\textsf{OCR}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
+\multicolumn{1}{l?}{\textsf{Explicit Content Detection}} & Gratis & 1,50\footnote{\label{explicit}Gratis se utilizzato assieme a \textsf{Label Detection}}
+& 1,50\textsuperscript{\ref{explicit}} & 0,60\textsuperscript{\ref{explicit}} \\ \hline
+\multicolumn{1}{l?}{\textsf{Facial Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
+\multicolumn{1}{l?}{\textsf{Landmark Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
+\multicolumn{1}{l?}{\textsf{Logo Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
+\multicolumn{1}{l?}{\textsf{Image Properties}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
+\multicolumn{1}{l?}{\textsf{Web Detection}} & Gratis & 3,50 & 3,50 & n.d.\footnote{\label{explicit} Contattare Google per maggiori informazioni.} \\ \hline
+\multicolumn{1}{l?}{\textsf{Web Detection}} & Gratis & 3,50 & 3,50 & n.d.\textsuperscript{\ref{explicit}} \\ \hline
+\end{tabularx}}
+\caption{Tariffe per la Cloud Vision API}
+\label{google-tariffe}
+\end{table}
