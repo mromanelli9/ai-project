@@ -2,6 +2,22 @@
 \section{Microsoft Cognitive Services: Computer Vision API}
 Per quanto concerne il riconoscimento delle immagini, Microsoft offre le \textit{Computer Vision API} \cite{microsoft-api}, che spaziano dal riconoscimento dei volti all'analisi delle caratteristiche cromatiche dell'immagine.
 
+\subsection{Prerequisiti}
+Caratteristiche immagini:
+\begin{itemize}
+\item Metodo: dati grezzi (stream application/octet) o url.
+\item Formati supportati: JPEG, PNG, GIF, BMP.
+\item Caratteristiche minime: 50x50 pixel. 
+\item Dimensione massima: 4 MB.
+\item Massimo numero di immagini per collezione: un milione.
+\end{itemize}
+Altro:
+\begin{itemize}
+\item Disponibilità: Stati Uniti occidentali.
+\end{itemize}
+
+
+\subsection{Analisi}
 In base allo scopo per cui si vuole analizzare l'immagine, il servizio mette a disposizione diversi metodi per ottenere le informazioni desiderate.
 
 \paragraph{Tagging} Le API ritornano un insieme di etichette (in formato JSON) che descrivono gli oggetti presenti nell'immagine, come oggetti, esseri viventi, azioni, paesaggi; per ogni etichetta viene anche fornito il livello di \textit{confidence} (affidabilità). I tag non sono in alcun modo organizzati fra loro e non esiste nessun tipo di ereditarietà.
