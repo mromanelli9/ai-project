@@ -1,14 +1,15 @@
 % GOOGLE
 \section{Google Cloud Machine Learning Services: Cloud Vision API}
-%TODO 
-% \cite{google-api}
+Le \textit{Google Cloud Vision API} \cite{google-api} permettono di analizzare un'immagine e classificarla in categorie, rilevare oggetti e volti, cercare parole,
+moderare contenuti offensivi e molto altro. Le immagini possono essere caricate assieme la richiesta, oppure utilizzare quelle già presenti nel Google Cloud Storage. 
 
 \subsection{Prerequisiti}
 Le immagini passate al servizio devono rispettare i seguenti requisiti:
 \begin{itemize}
-\item Metodo: %dati grezzi (stream application/octet) o oggetto Amazon S3.
-\item Formati supportati: %PNG, JPEG.
-\item Caratteristiche minime: %80x80 pixel. 
+\item Metodo: dati grezzi (stream application/octet) o tramite Google Cloud Storage URIs.
+\item Formati supportati: JPEG, PNG8, PNG24, GIF, Animated GIF\footnote{Viene considerato solo il primo frame.},
+BMP, WEBP, RAW, ICO.
+\item Caratteristiche minime: 640x480 pixel. 
 \item Dimensione massima: 4 MB.
 \end{itemize}
 Altro:
