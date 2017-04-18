@@ -57,12 +57,21 @@ I livelli di probabilità sono espressi secondo la scala a sei grada illustrata 
 \paragraph{\textsf{IMAGE\_PROPERTIES}} Restituisce una lista di colori dominanti; per ogni colore è presente la sua descrizione in formato RGB,
 un valore di punteggio e il numero di pixel di quel colore presenti nell'immagine (in rapporto al totale).
 %
-\paragraph{\textsf{CROP\_HINTS}} 
+\paragraph{\textsf{CROP\_HINTS}} Suggerisce i punti dove meglio ritagliare l'immagine.
+Viene restituito un valore di \textsf{importanceFraction}, che indica il rapporto fra l'``importanza'' dell'immagine ritagliata e l'immagine originale.
 %
-\paragraph{\textsf{WEB\_DETECTION}}
+\paragraph{\textsf{WEB\_DETECTION}} Restituisce informazioni presenti nel web rilevanti per l'immagine:
+\begin{itemize}
+\item \textsf{webEntities}: deduce elementi dell'immagine da immagini simili nel web;
+\item \textsf{fullMatchingImages}: immagini presenti nel web molto simili a quella di partenza (spesso sono copie); 
+\item \textsf{partialMatchingImages}: immagini presenti nel web che presentano elementi chiave in comune con quella di partenza;
+\item \textsf{webEntities}: pagine web che contengono immagine simili a quella di partenza.
+\end{itemize}
+
 %
 
-Le funzioni \textsf{LANDMARK\_DETECTION}, \textsf{CROP\_HINTS} e \textsf{WEB\_DETECTION} sono in beta. %TOTO-aggiungete
+Le funzioni \textsf{LANDMARK\_DETECTION}, \textsf{CROP\_HINTS} e \textsf{WEB\_DETECTION} sono in versione beta e potrebbero variare nel tempo.
+Non è consigliabile l'utilizzo applicativo e/o in applicazione critiche. 
 %
 %
 %
