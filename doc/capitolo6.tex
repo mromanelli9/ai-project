@@ -21,6 +21,7 @@ Altro:
 Per ogni immagine all'interno di una richiesta, è possibile specificare uno o più tipi di metodi (\textit{features}) corrispondenti alle azioni desiderate.
 \paragraph{\textsf{LABEL\_DETECTION}} Rileva elementi all'interno di un'ampia gamma di categorie che spaziano da animali, trasporti, eccetera.
 Per ogni elemento rilevato viene associato un punteggio che indica il grado di affidabilità che quella categoria rispecchi veramente l'elemento.
+%
 \paragraph{\textsf{FACE\_DETECTION}} Rileva i volti presenti nell'immagine e restituisce un insieme di metadati (per ogni volto) che includono:
 \begin{itemize}
 \item le coordinate di due poligoni, uno che circonda tutta la testa mentre un altro che circonda solamente il viso (la parte frontale della testa ricompera di pelle),
@@ -32,7 +33,32 @@ Per ogni elemento rilevato viene associato un punteggio che indica il grado di a
 \item le probabilità che l'immagine sia sottoesposta o sfuocata.
 \end{itemize}
 Le probabilità sono espresse secondo una scala a sei valori: \textsf{UNKNOWN}, \textsf{VERY\_UNLIKELY}, \textsf{UNLIKELY}, \textsf{POSSIBLE}, \textsf{LIKELY} e \textsf{VERY\_LIKELY}.
+%
+\paragraph{\textsf{TEXT\_DETECTION}} Effettua le stesse funzioni di un OCR (Optical Character Recognition): riconosce caratteri e parole all'interno dell'immagine.
+Restituisce la lingua del testo rilevato, il testo e le coordinate dei poligoni, uno per l'intera frase e uno per ogni parola che la costituisce.
+%
+\paragraph{\textsf{DOCUMENT\_TEXT\_DETECTION}} Esegue la stessa funzione del metodo precedente, ma è ottimizzato per immagini con molto testo.
+L'oggetto restituito da questo metodo è costituito dalla struttura: \textsf{Page}$\to$\textsf{Block}$\to$\textsf{Paragraph}$\to$\textsf{Word}$\to$\textsf{Symbol}.
 
+Una pagina contiene il linguaggio del testo al suo interno, l'altezza, la larghezza e una lista di blocchi.
+Un blocco contiene la lingua, le coordinate del poligono che racchiude il blocco, il tipo di blocco e una lista di paragrafi;
+i tipi sono: sconosciuto, testo, tabella, figura, linea o codice a barre.
+Il paragrafo include il testo che a sua volta contiene le singole parole che contengono i simboli.
+%
+\paragraph{\textsf{LANDMARK\_DETECTION}} 
+%
+\paragraph{\textsf{LOGO\_DETECTION}}
+%
+\paragraph{\textsf{SAFE\_SEARCH\_DETECTION}}
+%
+\paragraph{\textsf{IMAGE\_PROPERTIES}}
+%
+\paragraph{\textsf{CROP\_HINTS}}
+%
+\paragraph{\textsf{WEB\_DETECTION}}
+%
+%
+%
 \subsection{Tariffe}
 La Cloud Vision API fornisce diversi metodi per analizzare un'immagine.
 Ad ogni metodo corrisponde una tariffa che viene applicata ad ogni utilizzo su un'immagine, chiamato \textit{unità};
