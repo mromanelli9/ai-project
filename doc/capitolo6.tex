@@ -45,17 +45,24 @@ Un blocco contiene la lingua, le coordinate del poligono che racchiude il blocco
 i tipi sono: sconosciuto, testo, tabella, figura, linea o codice a barre.
 Il paragrafo include il testo che a sua volta contiene le singole parole che contengono i simboli.
 %
-\paragraph{\textsf{LANDMARK\_DETECTION}} 
+\paragraph{\textsf{LANDMARK\_DETECTION}} Questo metodo permette il riconoscimento di famose elementi naturali e artificiali, come ad esempio la Torre Eiffel, il ``Paris Hotel and Casino'' a Las Vegas, la Fontana di Trevi.
+Il valore ritornato contiene, oltre ai soliti elementi, le coordinate latitudine/longitudine.
 %
-\paragraph{\textsf{LOGO\_DETECTION}}
+\paragraph{\textsf{LOGO\_DETECTION}} Riconosce loghi e marchi di vari prodotti comuni o famosi. 
 %
-\paragraph{\textsf{SAFE\_SEARCH\_DETECTION}}
+\paragraph{\textsf{SAFE\_SEARCH\_DETECTION}} Rileva contenti non adatti ai minori e restituisce la probabilità che l'immagine contenga
+contenuti per adulti, relativi a un ambito medico, violenti o che sia una modifica di un'immagine originale con scopi ludici o offensivi.
+I livelli di probabilità sono espressi secondo la scala a sei grada illustrata precedentemente.
 %
-\paragraph{\textsf{IMAGE\_PROPERTIES}}
+\paragraph{\textsf{IMAGE\_PROPERTIES}} Restituisce una lista di colori dominanti; per ogni colore è presente la sua descrizione in formato RGB,
+un valore di punteggio e il numero di pixel di quel colore presenti nell'immagine (in rapporto al totale).
 %
-\paragraph{\textsf{CROP\_HINTS}}
+\paragraph{\textsf{CROP\_HINTS}} 
 %
 \paragraph{\textsf{WEB\_DETECTION}}
+%
+
+Le funzioni \textsf{LANDMARK\_DETECTION}, \textsf{CROP\_HINTS} e \textsf{WEB\_DETECTION} sono in beta. %TOTO-aggiungete
 %
 %
 %
