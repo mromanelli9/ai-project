@@ -18,7 +18,20 @@ Altro:
 \end{itemize}
 
 \subsection{Analisi}
-%TODO 
+Per ogni immagine all'interno di una richiesta, è possibile specificare uno o più tipi di metodi (\textit{features}) corrispondenti alle azioni desiderate.
+\paragraph{\textsf{LABEL\_DETECTION}} Rileva elementi all'interno di un'ampia gamma di categorie che spaziano da animali, trasporti, eccetera.
+Per ogni elemento rilevato viene associato un punteggio che indica il grado di affidabilità che quella categoria rispecchi veramente l'elemento.
+\paragraph{\textsf{FACE\_DETECTION}} Rileva i volti presenti nell'immagine e restituisce un insieme di metadati (per ogni volto) che includono:
+\begin{itemize}
+\item le coordinate di due poligoni, uno che circonda tutta la testa mentre un altro che circonda solamente il viso (la parte frontale della testa ricompera di pelle),
+\item le coordinate per un insieme di punti di riferimento del viso, fra cui occhi, orecchie, sopracciglia, labbra, naso, bocca\footnote{Per la lista completa vedere \url{https://cloud.google.com/vision/docs/reference/rest/v1/images/annotate\#Landmark}.}.
+\item il grado di rotazione del volto, espresso nella forma degli angoli di Tait-Bryan (imbardata, rollio e beccheggio), 
+\item il grado di affidabilità (che l'elemento rilevato sia effettivamente un volto),
+\item il grado di affidabilità dei punti di riferimento,
+\item le probabilità che il volto esprima gioia, tristezza, rabbia, sorpresa e che sia presente un cappello, 
+\item le probabilità che l'immagine sia sottoesposta o sfuocata.
+\end{itemize}
+Le probabilità sono espresse secondo una scala a sei valori: \textsf{UNKNOWN}, \textsf{VERY\_UNLIKELY}, \textsf{UNLIKELY}, \textsf{POSSIBLE}, \textsf{LIKELY} e \textsf{VERY\_LIKELY}.
 
 \subsection{Tariffe}
 La Cloud Vision API fornisce diversi metodi per analizzare un'immagine.
