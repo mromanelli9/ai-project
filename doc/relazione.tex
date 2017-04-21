@@ -1,13 +1,15 @@
 \documentclass[fleqn,a4paper,11pt]{article}
 \usepackage[italian]{babel}
+\usepackage[utf8x]{inputenc}
 \usepackage[margin=1in]{geometry}
 \usepackage[final]{graphicx}
+\usepackage[toc,page]{appendix}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{wasysym}
 \usepackage{stmaryrd}
 \usepackage{amsfonts}
-\usepackage[utf8x]{inputenc}
 \usepackage{booktabs}
 \usepackage{url}
 \usepackage{listings}
@@ -31,7 +33,6 @@
 \usepackage{titlesec}
 \titleformat{\chapter}[hang]
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter:}{.3em}{} 
-
 %\titlespacing*{<command>}{<left>}{<before-sep>}{<after-sep>}
 \titlespacing*{\chapter}
 {0pt}{5.5ex plus 1ex minus .2ex}{3.3ex plus .2ex}
@@ -70,6 +71,9 @@
 % begin document
 %%%%%%%%%%%%%%%%%%%%%%%%
 
+\tableofcontents
+\newpage
+
 % INTRO
 \input{capitolo1.tex} 
 
@@ -88,13 +92,15 @@
 % GOOGLE
 \input{capitolo6.tex}
 
-% TABELLE
+% APPLICAZIONI REALI
 \input{capitolo7.tex}
 
-% APPLICAZIONI REALI
-\input{capitolo8.tex}
+\appendix
+% TABELLE
+\input{appendice1.tex}
 
 % BIBLIOGRAFIA
+\clearpage % da cambiare se prima ci sono troppi spazi vuoti
 \bibliography{biblio.bib}
 \bibliographystyle{ieeetr}
 
