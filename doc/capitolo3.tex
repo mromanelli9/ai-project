@@ -73,6 +73,18 @@ L'utilizzo di questa funzione è di due tipologie:
 (o, meglio, del rettangolo che lo include) e utilizzare questa tipologia (pagando un costo inferiore);
 \item standard: se non è stata effettuata nessuna chiamata con la \textit{Face API}.
 \end{itemize}
+%
+\subsection{Face API}
+Questa funzione permette un'analisi più approfondita dei volti rispetto alle \textit{Computer Vision API}, includendo anche funzioni di confronto e ricerca.
+
+\paragraph{Rilevamento volti} Rileva i volti presenti nell'immagine (fino a 64) e restituisce le coordinate del rettangolo che ingloba il viso, gli attributi facciali
+e i punti di riferimento
+I punti di riferimento sono le coordinate degli elementi (di riferimento) del viso, come le pupille, le sopracciglia, i punti della bocca, il naso, eccetera.
+Fra gli attributi facciali si trovano l'eta, il sesso, l'intensità del sorriso, un valore per indicare la tipologia di barba, la posizione tridimensionale del volto
+espressa in gradi di Tait-Bryan (imbardata, rollio e beccheggio), la presenza di occhiali, le emozioni (vedi sezione precedente), eccetera.
+
+\paragraph{Verifica di un volto} Calcola la probabilità che due volti appartengano alla stessa persona.
+Per default, due volti sono ``dichiarati'' appartenenti alla stessa persona se il valore di verosimiglianza è superiore allo $0,5\%$.
 
 %
 %
