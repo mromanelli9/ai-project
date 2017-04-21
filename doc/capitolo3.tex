@@ -1,7 +1,14 @@
 % MICROSOFT
-\section{Microsoft Cognitive Services: Computer Vision API}
-Per quanto concerne il riconoscimento delle immagini, Microsoft offre le \textit{Computer Vision API} \cite{microsoft-api}, che spaziano dal riconoscimento dei volti all'analisi delle caratteristiche cromatiche dell'immagine.
-
+\section{Microsoft Cognitive Services: Vision API}
+Per quanto concerne il riconoscimento delle immagini, Microsoft offre le diverse API per l'analisi delle immagini, raggruppate nella categoria \textit{Vision}:
+\begin{itemize}
+\item \textit{Computer Vision API}: che comprende diverse funzioni, dal riconoscimento di oggetti alla creazione di anteprime;
+\item \textit{Content Moderator}: per aiutare i moderatori nell'analisi di immagini, testi e video (verrà analizzata solo l'analisi di immagini);
+\item \textit{Emotion API}: per il riconoscimento di emozioni;
+\item \textit{Face API}: per il ricongiunto di volti;
+\item \textit{Video API}: per l'analisi di video (non verrà preso in considerazioni in questa analisi).
+\end{itemize}
+%
 \subsection{Prerequisiti}
 Caratteristiche immagini:
 \begin{itemize}
@@ -12,12 +19,12 @@ Caratteristiche immagini:
 \end{itemize}
 Altro:
 \begin{itemize}
-\item Disponibilità: Stati Uniti occidentali.
+\item Disponibilità: Stati Uniti occidentali, Stati Uniti Orientali 2, Stati Uniti centro-occidentali, Europa occidentale, Asia sud-orientale
+\footnote{Per conoscere in dettaglio le aree visitare la pagina: \url{https://azure.microsoft.com/en-us/regions/}.}.
 \end{itemize}
-
-
-\subsection{Analisi}
-In base allo scopo per cui si vuole analizzare l'immagine, il servizio mette a disposizione diversi metodi per ottenere le informazioni desiderate.
+%
+\subsection{Computer Vision API}
+In base allo scopo per cui si vuole analizzare l'immagine, le \textit{Computer Vision API} \cite{microsoft-api} mettono a disposizione diversi metodi per ottenere le informazioni desiderate.
 
 \paragraph{Tagging} Le API ritornano un insieme di etichette (in formato JSON) che descrivono gli oggetti presenti nell'immagine, come oggetti, esseri viventi, azioni, paesaggi; per ogni etichetta viene anche fornito il livello di \textit{confidence} (affidabilità). I tag non sono in alcun modo organizzati fra loro e non esiste nessun tipo di ereditarietà.
 Nel caso un tag sia ambiguo viene fornito in aggiunta un \textit{hint} che ne spiega il contenuto.
@@ -43,8 +50,22 @@ L'accuratezza del riconoscimento dipende dalla qualità dell'immagine ed eventua
    
 \paragraph{Creazione anteprime} Un'anteprima è una rappresentazione dell'immagine in scala ridotta. L'immagine viene prima analizzata e poi ritagliata secondo la ``regione di interesse'' (ROI); il rapporto dell'immagine (\textit{aspect ratio}) può essere impostato secondo le proprie preferenze.
 
+\subsection{Content Moderator}
+Le \textit{Content Moderator’s image moderation API} \cite{microsoft-api-2} permettono di rilevare immagini a contenuto pornografico e contenuti per adulti in generale.
+Si possono distinguere tre tipi di operazione.
+\begin{itemize}
+\item \textsf{Evaluate}: rileva se l'immagine contiene contenuti per adulti e/o contenuti osé.
+\item \textsf{Find Faces}: permette di identificare la probabilità di trovare dei volti e, in caso positivo, quanti ne sono presenti; potrebbe essere utilizzato, ad esempio, per evitare che gli utenti inviino informazioni personali (come la propria persona).
+\item \textsf{Match}: è possibile creare e personalizzare una lista dei contenuti che si vogliono bloccare; a questo punto il sistema di moderazione confronta le immagini caricate
+con quelle presenti nella lista, identificando non solo i doppioni ma anche versioni leggermente modificate.
+Il sistema fornisce anche un insieme di etichette per identificare al meglio il tipo di contenuto, come nudità, alcool, armi, sfruttamento minorile, eccettera.  
+\end{itemize}
+%
+%
 \subsection{Tariffe} Due tipologie di piani:
 \begin{itemize}
 \item Gratuito: fino a 5000 chiamate al mese, massimo 20 chiamate al minuto;
 \item Standard: 0,0015\$ a chiamata, fino a 10 TPS.
 \end{itemize}
+%
+%
