@@ -62,10 +62,50 @@ Il sistema fornisce anche un insieme di etichette per identificare al meglio il 
 \end{itemize}
 %
 %
-\subsection{Tariffe} Due tipologie di piani:
-\begin{itemize}
-\item Gratuito: fino a 5000 chiamate al mese, massimo 20 chiamate al minuto;
-\item Standard: 0,0015\$ a chiamata, fino a 10 TPS.
-\end{itemize}
+%\subsection{Tariffe} Due tipologie di piani:
+%\begin{itemize}
+%\item Gratuito: fino a 5000 chiamate al mese, massimo 20 chiamate al minuto;
+%\item Standard: 0,0015\$ a chiamata, fino a 10 TPS.
+%\end{itemize}
+\subsection{Tariffe}
+Il piano gratuito prevede la possibilità di effettuare 5.000 chiamate al mese per le \textit{Vision API} e 30.000 per la \textit{Emotion API} e \textit{Face API}, con un limite di 20 chiamate al minuto tranne che per la moderazione, dove il limite è di una chiamata/secondo.
+I piani a pagamento, invece, variano dai 2,50 \$ per 1.000 chiamate fino a 0,65 \$, in base al servizio richiesto e al numero di chiamate effettuate al mese.
+La tabella \ref{tab:microsoft-tariffe} riassume i costi, espressi in dollari americani (USD) ogni 1.000 chiamate; nelle colonne troviamo il carico di lavoro, espresso in chiamate alle API al mese.
+
+Per la \textit{Content Moderator API}, invece, il piano gratuito prevede 5.000 chiamate al mese e un massimo di una al secondo.
+Il piano standard parte da 1,00 \$ ogni 1.000 chiamate fino a 1M di chiamate/mese, 0,75 \$ da 1M a 5M, 0,60 \$ da 5M a 10M e 0,60 \$ fino a 20M.
+%
+\begin{table}[!h]
+\centering
+{\tiny
+\begin{tabularx}{.4\textwidth}{@{} l?c|c|c @{}}
+\toprule
+Metodo & 1 - 1M & 1M - 5M & 5M - 20M  \\ \hline
+\midrule                           
+\multicolumn{1}{l?}{\textsf{Tag}} & 1,00 & 0,80 & 0,65 \\ \hline
+\multicolumn{1}{l?}{\textsf{OCR}} & 1,50 & 1,00 & 0,65 \\ \hline
+\multicolumn{1}{l?}{\textsf{Handwriting OCR}} & 2,50 & - & - \\ \hline
+\multicolumn{1}{l?}{\textsf{Describe}} & 2,50 & - & - \\ \hline
+\multicolumn{1}{l?}{\textsf{Adult}} & 1,5 & 1,00 & 0,65 \\ \hline
+\multicolumn{1}{l?}{\textsf{Face}} & 1,00 & 0,80 & 0,65 \\ \hline
+\multicolumn{1}{l?}{\textsf{Categories}} & 1,00 & 0,80 & 0,65 \\ \hline
+\multicolumn{1}{l?}{\textsf{Celebrity}} & 1,50 & 1,00 & 0,65  \\ \hline
+\multicolumn{1}{l?}{\textsf{Landmark}} & 1,50 & 1,00 & 0,65  \\ \hline
+\multicolumn{1}{l?}{\textsf{Get Thumbnail}} & 1,00 & 0,80 & 0,65  \\ \hline
+\multicolumn{1}{l?}{\textsf{Color}} & 1,00 & 0,80 & 0,65  \\ \hline
+\multicolumn{1}{l?}{\textsf{Image Type}} & 1,00 & 0,80 & 0,65 \\ \hline
+\end{tabularx}}
+\caption{Tariffe per le Computer Vision API}
+\label{tab:microsoft-tariffe}
+\end{table}
+%
+
+Per le \textit{Emotion API} è previsto l'utilizzo gratuito fino a 30K chiamate al mese.
+Alternativamente il costo è 0,10 \$ ogni 1.000 chiamate per il piano base e 0,25 \$ per quello standard
+\footnote{Per le differenze fra il piano base e standard si rimanda alla documentazione ufficiale.}.
+
+Per le \textit{Face API} il limite per il piano gratuito è lo stesso della precedente, mentre i costi variano in base al numero di transizioni:
+fino a 1M il costo è di 1,50 \$ ogni 1.000 chiamate, fino a 5M di 1,10 \$ e fino a 20M di 0,65 \$.
+Il costo per lo spazio di archiviazione è di 0,50 \$ ogni 1.000 immagini/mese con un massimo di 4MB a immagine.  
 %
 %
