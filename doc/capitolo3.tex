@@ -86,6 +86,22 @@ espressa in gradi di Tait-Bryan (imbardata, rollio e beccheggio), la presenza di
 \paragraph{Verifica di un volto} Calcola la probabilità che due volti appartengano alla stessa persona.
 Per default, due volti sono ``dichiarati'' appartenenti alla stessa persona se il valore di verosimiglianza è superiore allo $0,5\%$.
 
+\paragraph{Identificazione volti} Può essere utilizzato per identificare le persone sulla base di un volto e di un database di persone (chiamato \textit{person group}),
+creato in precedenza e che può essere aggiornato nel tempo.
+Dopo aver creato e addestrato il database, si può procedere all'identificazione data una nuova faccia;
+viene restituita una lista di candidati, ordinati per probabilità decrescente che il volto appartenga a quella persona.
+
+\paragraph{Ricerca volti simili} Fornendo un volto obbiettivo e un insieme di candidati (di volti) all'interno del quale eseguire la ricerca,
+questa funzione restituisce un piccolo insieme di volti che assomiglia al volto obiettivo.
+Questo può essere fatto con due modalità: \textsf{matchPerson} e \textsf{matchFace}.
+Il primo è il metodo di default e cerca di trovare volti simili della stessa persona utilizzando una soglia interna di verosimiglianza;
+utile per cercare altre foto di una persona conosciuta.
+Il secondo ignora il valore di soglia e restituisce una lista ordinata di volti simili, anche se il valore di verosimiglianza è basso;
+può essere utilizzato, ad esempio, per la ricerca di volti di personaggi famosi.
+
+\paragraph{Aggregazione di volti} Dato un insieme di volti (da 2 a 1.000), questo metodo raggruppa automaticamente i volti simili fra loro creando dei sotto insiemi.
+Ogni gruppo è un insieme disgiunto proprio dell'insieme di partenza; ogni volto all'interno del gruppo può essere considerato come della stessa persona.
+E' previsto un gruppo speciale, chiamato \textsf{messyGroup}, contente quei volti che non trovano riscontri di similarità.
 %
 %
 %\subsection{Tariffe} Due tipologie di piani:
