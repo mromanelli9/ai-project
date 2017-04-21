@@ -50,7 +50,7 @@ L'accuratezza del riconoscimento dipende dalla qualità dell'immagine ed eventua
    
 \paragraph{Creazione anteprime} Un'anteprima è una rappresentazione dell'immagine in scala ridotta. L'immagine viene prima analizzata e poi ritagliata secondo la ``regione di interesse'' (ROI); il rapporto dell'immagine (\textit{aspect ratio}) può essere impostato secondo le proprie preferenze.
 
-\subsection{Content Moderator}
+\subsection{Content Moderator API}
 Le \textit{Content Moderator’s image moderation API} \cite{microsoft-api-2} permettono di rilevare immagini a contenuto pornografico e contenuti per adulti in generale.
 Si possono distinguere tre tipi di operazione.
 \begin{itemize}
@@ -60,6 +60,20 @@ Si possono distinguere tre tipi di operazione.
 con quelle presenti nella lista, identificando non solo i doppioni ma anche versioni leggermente modificate.
 Il sistema fornisce anche un insieme di etichette per identificare al meglio il tipo di contenuto, come nudità, alcool, armi, sfruttamento minorile, eccettera.  
 \end{itemize}
+%
+%
+\subsection{Emotion API}
+Dato uno o più volti in un'immagine, l'\textit{Emotion API} \cite{microsoft-api-4} permette di identificare le espressioni del viso e riconoscere quali emozioni vuole trasmettere.
+Le emozioni rilevabili sono rabbia, paura, felicità, espressione neutra, tristezza, sorpresa, disprezzo e disgusto (le ultime due sono sperimentali).
+Per ognuna di queste, viene restituito un punteggio corrispondente alla probabilità che quella data emozione sia espressa nel volto.
+
+L'utilizzo di questa funzione è di due tipologie:
+\begin{itemize}
+\item base: se l'utente ha già utilizzato le API per il riconoscimento facciale \textit{Face API}, allora nella chiamata può includere le coordinate del viso
+(o, meglio, del rettangolo che lo include) e utilizzare questa tipologia (pagando un costo inferiore);
+\item standard: se non è stata effettuata nessuna chiamata con la \textit{Face API}.
+\end{itemize}
+
 %
 %
 %\subsection{Tariffe} Due tipologie di piani:
