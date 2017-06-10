@@ -3,6 +3,10 @@
 % !TEX root = relazione.tex
 % !TeX spellcheck = it_IT
 
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND MISC SETTINGS
+%----------------------------------------------------------------------------------------
+
 \documentclass[fleqn,a4paper,11pt]{article}
 \usepackage[italian]{babel}
 \usepackage[utf8x]{inputenc}
@@ -42,16 +46,31 @@
 \titlespacing*{\chapter}
 {0pt}{5.5ex plus 1ex minus .2ex}{3.3ex plus .2ex}
 
+\usepackage{fancyhdr}	% Use to set header and footer
+\pagestyle{fancy}
+% E: Even page, O: Odd page, L: Left field, C: Center field
+% R: Right field, H: Header, F: Footer
+\fancyhead{} % clear all header fields
+\fancyhead[RO,LE]{\textbf{Servivi cognitivi e analisi visiva}}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{Marco Romanelli}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
 \graphicspath{{../img/}}
 
 \begin{document}
 
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
 % begin intro
 \begin{titlepage}
 \begin{center}
 	\begin{minipage}{6in}
   		\centering
-  		\raisebox{-0.5\height}{\includegraphics[height=80px]{pollo.png}}
+  		\raisebox{-0.5\height}{\includegraphics [height=80px]{pollo.png}}
   		\hspace*{1.6in}
   		\raisebox{-0.5\height}{\includegraphics[height=20px]{logoDM.png}}
   		%\hspace*{.35in}
@@ -70,48 +89,59 @@
 \HRule \\[3cm]
 \end{center}
 \end{titlepage}
-\newpage
-% end intro
 
-% begin document
-%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------------------
 
-\tableofcontents
-\newpage
 
-% INTRO
-\input{capitolo1.tex}
+%----------------------------------------------------------------------------------------
+%	DOCUMENT HEADER
+%----------------------------------------------------------------------------------------
 
-% PANORAMICA
-\input{capitolo2.tex}
+	%----------------------------------------------------------------------------------------
+	%	TOC
+	%----------------------------------------------------------------------------------------
 
-% MICROSOFT
-\input{capitolo3.tex}
+	\clearpage
+	\tableofcontents
+	\newpage
 
-% IBM
-\input{capitolo4.tex}
+	%----------------------------------------------------------------------------------------
+	%	BODY
+	%----------------------------------------------------------------------------------------
 
-% AMAZON
-\input{capitolo5.tex}
+	% INTRO
+	\input{capitolo1.tex}
 
-% GOOGLE
-\input{capitolo6.tex}
+	% PANORAMICA
+	\input{capitolo2.tex}
 
-% APPLICAZIONI REALI
-\input{capitolo7.tex}
+	% MICROSOFT
+	\input{capitolo3.tex}
 
-\clearpage
-\appendix
-% TABELLE
-\input{appendice1.tex}
+	% IBM
+	\input{capitolo4.tex}
 
-% BIBLIOGRAFIA
-\clearpage % da cambiare se prima ci sono troppi spazi vuoti
-\bibliography{biblio.bib}
-\bibliographystyle{ieeetr}
+	% AMAZON
+	\input{capitolo5.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%
+	% GOOGLE
+	\input{capitolo6.tex}
 
-%
-% end document
+	% APPLICAZIONI REALI
+	\input{capitolo7.tex}
+
+	\clearpage
+	\appendix
+	% TABELLE
+	\input{appendice1.tex}
+
+	% BIBLIOGRAFIA
+	\clearpage % da cambiare se prima ci sono troppi spazi vuoti
+	\bibliography{biblio.bib}
+	\bibliographystyle{ieeetr}
+
+	%----------------------------------------------------------------------------------------
+	%	END
+	%----------------------------------------------------------------------------------------
+
 \end{document}
