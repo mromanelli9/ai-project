@@ -3,7 +3,7 @@ This is the project for Artificial Intelligence course at the University of Pado
 
 ## Getting Started
 ### Prerequisites
-LaTeX, python
+LaTeX, Python
 
 ### Installing
 First, clone this repo:
@@ -16,9 +16,5 @@ cd ai-project/doc
 pdflatex relazione.tex
 ```
 
-## Contributors
-- None
-
 ## License
-
-[MIT] (https://gitlab.com/mromanelli/ai-project/LICENSE)
+[![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)
