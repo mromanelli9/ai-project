@@ -1,3 +1,8 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX root = relazione.tex
+% !TeX spellcheck = it_IT
+
 % MICROSOFT
 \section{Microsoft Cognitive Services}
 Per quanto concerne il riconoscimento delle immagini, Microsoft offre le diverse API per l'analisi delle immagini, raggruppate nella categoria \textit{Vision}:
@@ -14,7 +19,7 @@ Caratteristiche immagini:
 \begin{itemize}
 \item Metodo: dati grezzi (stream application/octet) o url.
 \item Formati supportati: JPEG, PNG, GIF, BMP.
-\item Caratteristiche minime: 50x50 pixel. 
+\item Caratteristiche minime: 50x50 pixel.
 \item Dimensione massima: 4 MB.
 \end{itemize}
 Altro:
@@ -47,7 +52,7 @@ Al momento la sola lingua supportata è l'inglese.
 \paragraph{Riconoscimento del testo (OCR)} Rileva il testo presente nell'immagine e lo trasforma in un flusso di parole, ruota l'immagine se necessario per rendere il testo orizzontale e fornisce le coordinate per ogni parola. Al momento sono supportati 21 linguaggi, fra cui l'inglese, l'italiano, il francese, il tedesco e lo spagnolo.
 
 L'accuratezza del riconoscimento dipende dalla qualità dell'immagine ed eventuali errori possono essere causati da immagini sfuocate, scrittura a mano, testo troppo piccolo, ecc.
-   
+
 \paragraph{Creazione anteprime} Un'anteprima è una rappresentazione dell'immagine in scala ridotta. L'immagine viene prima analizzata e poi ritagliata secondo la ``regione di interesse'' (ROI); il rapporto dell'immagine (\textit{aspect ratio}) può essere impostato secondo le proprie preferenze.
 
 \subsection{Content Moderator API}
@@ -58,7 +63,7 @@ Si possono distinguere tre tipi di operazione.
 \item \textsf{Find Faces}: permette di identificare la probabilità di trovare dei volti e, in caso positivo, quanti ne sono presenti; potrebbe essere utilizzato, ad esempio, per evitare che gli utenti inviino informazioni personali (come la propria persona).
 \item \textsf{Match}: è possibile creare e personalizzare una lista dei contenuti che si vogliono bloccare; a questo punto il sistema di moderazione confronta le immagini caricate
 con quelle presenti nella lista, identificando non solo i doppioni ma anche versioni leggermente modificate.
-Il sistema fornisce anche un insieme di etichette per identificare al meglio il tipo di contenuto, come nudità, alcool, armi, sfruttamento minorile, eccettera.  
+Il sistema fornisce anche un insieme di etichette per identificare al meglio il tipo di contenuto, come nudità, alcool, armi, sfruttamento minorile, eccettera.
 \end{itemize}
 %
 %
@@ -123,7 +128,7 @@ Il piano standard parte da 1,00 \$ ogni 1.000 chiamate fino a 1M di chiamate/mes
 \begin{tabularx}{.4\textwidth}{@{} l?c|c|c @{}}
 \toprule
 Metodo & 1 - 1M & 1M - 5M & 5M - 20M  \\ \hline
-\midrule                           
+\midrule
 \multicolumn{1}{l?}{\textsf{Tag}} & 1,00 & 0,80 & 0,65 \\ \hline
 \multicolumn{1}{l?}{\textsf{OCR}} & 1,50 & 1,00 & 0,65 \\ \hline
 \multicolumn{1}{l?}{\textsf{Handwriting OCR}} & 2,50 & - & - \\ \hline
@@ -148,6 +153,6 @@ Alternativamente il costo è 0,10 \$ ogni 1.000 chiamate per il piano base e 0,2
 
 Per le \textit{Face API} il limite per il piano gratuito è lo stesso della precedente, mentre i costi variano in base al numero di transizioni:
 fino a 1M il costo è di 1,50 \$ ogni 1.000 chiamate, fino a 5M di 1,10 \$ e fino a 20M di 0,65 \$.
-Il costo per lo spazio di archiviazione è di 0,50 \$ ogni 1.000 immagini/mese con un massimo di 4MB a immagine.  
+Il costo per lo spazio di archiviazione è di 0,50 \$ ogni 1.000 immagini/mese con un massimo di 4MB a immagine.
 %
 %
