@@ -57,13 +57,14 @@ def processRequest( url, json, data, headers, params ):
 
 	return result
 
-def renderResultOnImage( result, img ):
+def renderResultOnImage( result, filename ):
 	"""
 	Display the obtained results onto the input image
 	"""
 
-	canvas = np.zeros((450, 270, 3), np.uint8)
-	canvas = cv.imread(img)
+	#canvas = np.zeros((450, 270, 3), np.uint8)
+	#canvas = cv.imread(filename)
+	img = cv.imread(filename)
 
 	if ("regions" in result) and ("lines" in result["regions"][0]):
 		lines = result["regions"][0]["lines"]
@@ -71,46 +72,32 @@ def renderResultOnImage( result, img ):
 			coordinates = map(int, line["boundingBox"].split(','))
 			top_left = (coordinates[0], coordinates[1])
 			bottom_right = (coordinates[0] + coordinates[2], coordinates[1] + coordinates[3])
-			cv.rectangle(canvas, top_left, bottom_right, (0,255,0), 1)
+			print(top_left, bottom_right)
+			cv.rectangle(img, top_left, bottom_right, (0,255,0), 1)
 
-	cv.imshow('Result', canvas)
+	cv.namedWindow('image', cv.WINDOW_NORMAL)
+	cv.imshow('Result', img)
 	cv.waitKey(0)
 	cv.destroyAllWindows()
 
-def wrapper(mode):
+def main():
 	"""
-	Wraps several methods for analyse an image (having in mind the project goal)
-
-	Parameters:
-	mode: select the type of operation to perform
-		0: Analyze image (Tags and Classification)
-		1: OCR
+	Analyse an image (having in mind the project goal)
 
 	[Documentation can be found at: https://goo.gl/htwlmc]
 	"""
 
+	print("[+] Mode: Analyze Image.")
+
+
 	# define which API endpoint will be used
-	operation = None
+	operation = "analyze"
 
 	# Computer Vision parameters
-	params = None
-
-	if mode == 0:
-		print("[+] Mode: Analyze Image.")
-		operation = "analyze"
-		params = {
-			"visualFeatures" : "Tags,Categories"
-		}
-	elif mode == 1:
-		print("[+] Mode: OCR.")
-		operation = "ocr"
-		params = {
-			"language": "it",
-			"detectOrientation": "true"
-		}
-	else:
-	 	print("[!] Error: undefined operation.")
-		sys.exit(1)
+	params = {
+		"visualFeatures" : "Tags,Categories,Description",
+		"language" : "en"
+	}
 
 	headers = dict()
 	headers["Ocp-Apim-Subscription-Key"] = _key
@@ -126,21 +113,20 @@ def wrapper(mode):
 		pp = pprint.PrettyPrinter(indent=2)
 		pp.pprint(result)
 
-		if mode == 1:
-			renderResultOnImage(result, _localImage)
+		#renderResultOnImage(result, _localImage)
 
 
 if __name__ == "__main__":
 	_url = "https://westus.api.cognitive.microsoft.com/vision/v1.0/"
 	_key = "***REMOVED***"        # my primary key
-	_maxNumRetries = 10                                # not used
+	_maxNumRetries = 10                            	# not used
 
 	_urlImage = "https://cdn.pbrd.co/images/OtNOX1gbi.jpg"
-	_localImage = "../doc/img/scontrino.jpg"
+	_localImage = None
 
 	# if there is arguments use them instead of default values
 	if len(sys.argv) == 2:
-		localImage = str(sys.argv[1])
+		_localImage = str(sys.argv[1])
 
 	# Set parameters and then call the API
-	wrapper(1)
+	main()
