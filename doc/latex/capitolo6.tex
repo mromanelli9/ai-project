@@ -1,7 +1,12 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX root = relazione.tex
+% !TeX spellcheck = it_IT
+
 % GOOGLE
 \section{Google Cloud Machine Learning Services}
 Le \textit{Google Cloud Vision API} \cite{google-api} permettono di analizzare un'immagine e classificarla in categorie, rilevare oggetti e volti, cercare parole,
-moderare contenuti offensivi e molto altro. Le immagini possono essere caricate assieme la richiesta, oppure utilizzare quelle già presenti nel Google Cloud Storage. 
+moderare contenuti offensivi e molto altro. Le immagini possono essere caricate assieme la richiesta, oppure utilizzare quelle già presenti nel Google Cloud Storage.
 
 \subsection{Prerequisiti}
 Le immagini passate al servizio devono rispettare i seguenti requisiti:
@@ -9,7 +14,7 @@ Le immagini passate al servizio devono rispettare i seguenti requisiti:
 \item Metodo: dati grezzi (stream application/octet) o tramite Google Cloud Storage URIs.
 \item Formati supportati: JPEG, PNG8, PNG24, GIF, Animated GIF\footnote{Viene considerato solo il primo frame.},
 BMP, WEBP, RAW, ICO.
-\item Caratteristiche minime: 640x480 pixel. 
+\item Caratteristiche minime: 640x480 pixel.
 \item Dimensione massima: 4 MB.
 \end{itemize}
 %Altro:
@@ -26,10 +31,10 @@ Per ogni elemento rilevato viene associato un punteggio che indica il grado di a
 \begin{itemize}
 \item le coordinate di due poligoni, uno che circonda tutta la testa mentre un altro che circonda solamente il viso (la parte frontale della testa ricompera di pelle),
 \item le coordinate per un insieme di punti di riferimento del viso, fra cui occhi, orecchie, sopracciglia, labbra, naso, bocca\footnote{Per la lista completa vedere \url{https://cloud.google.com/vision/docs/reference/rest/v1/images/annotate\#Landmark}.}.
-\item il grado di rotazione del volto, espresso nella forma degli angoli di Tait-Bryan (imbardata, rollio e beccheggio), 
+\item il grado di rotazione del volto, espresso nella forma degli angoli di Tait-Bryan (imbardata, rollio e beccheggio),
 \item il grado di affidabilità (che l'elemento rilevato sia effettivamente un volto),
 \item il grado di affidabilità dei punti di riferimento,
-\item le probabilità che il volto esprima gioia, tristezza, rabbia, sorpresa e che sia presente un cappello, 
+\item le probabilità che il volto esprima gioia, tristezza, rabbia, sorpresa e che sia presente un cappello,
 \item le probabilità che l'immagine sia sottoesposta o sfuocata.
 \end{itemize}
 Le probabilità sono espresse secondo una scala a sei valori: \textsf{UNKNOWN}, \textsf{VERY\_UNLIKELY}, \textsf{UNLIKELY}, \textsf{POSSIBLE}, \textsf{LIKELY} e \textsf{VERY\_LIKELY}.
@@ -48,7 +53,7 @@ Il paragrafo include il testo che a sua volta contiene le singole parole che con
 \paragraph{\textsf{LANDMARK\_DETECTION}} Questo metodo permette il riconoscimento di famose elementi naturali e artificiali, come ad esempio la Torre Eiffel, il ``Paris Hotel and Casino'' a Las Vegas, la Fontana di Trevi.
 Il valore ritornato contiene, oltre ai soliti elementi, le coordinate latitudine/longitudine.
 %
-\paragraph{\textsf{LOGO\_DETECTION}} Riconosce loghi e marchi di vari prodotti comuni o famosi. 
+\paragraph{\textsf{LOGO\_DETECTION}} Riconosce loghi e marchi di vari prodotti comuni o famosi.
 %
 \paragraph{\textsf{SAFE\_SEARCH\_DETECTION}} Rileva contenti non adatti ai minori e restituisce la probabilità che l'immagine contenga
 contenuti per adulti, relativi a un ambito medico, violenti o che sia una modifica di un'immagine originale con scopi ludici o offensivi.
@@ -63,7 +68,7 @@ Viene restituito un valore di \textsf{importanceFraction}, che indica il rapport
 \paragraph{\textsf{WEB\_DETECTION}} Restituisce informazioni presenti nel web rilevanti per l'immagine:
 \begin{itemize}
 \item \textsf{webEntities}: deduce elementi dell'immagine da immagini simili nel web;
-\item \textsf{fullMatchingImages}: immagini presenti nel web molto simili a quella di partenza (spesso sono copie); 
+\item \textsf{fullMatchingImages}: immagini presenti nel web molto simili a quella di partenza (spesso sono copie);
 \item \textsf{partialMatchingImages}: immagini presenti nel web che presentano elementi chiave in comune con quella di partenza;
 \item \textsf{webEntities}: pagine web che contengono immagine simili a quella di partenza.
 \end{itemize}
@@ -71,7 +76,7 @@ Viene restituito un valore di \textsf{importanceFraction}, che indica il rapport
 %
 
 Le funzioni \textsf{LANDMARK\_DETECTION}, \textsf{CROP\_HINTS} e \textsf{WEB\_DETECTION} sono in versione beta e potrebbero variare nel tempo.
-Non è consigliabile l'utilizzo applicativo e/o in applicazione critiche. 
+Non è consigliabile l'utilizzo applicativo e/o in applicazione critiche.
 %
 %
 %
@@ -87,7 +92,7 @@ Il prezzo è determinato dal numero di unità per mese e il costo per ogni metod
 \begin{tabularx}{\linewidth}{l?c|c|c|c}
 \toprule
 Metodo & 1-1 000 unità/mese & 1 001-1 000 000 unità/mese & 1 000 001-5 000 000 unità/mese & 5 000 001-20 000 000 unità/mese \\ \hline
-\midrule                           
+\midrule
 \multicolumn{1}{l?}{\textsf{Label Detection}} & Gratis & 1,50 & 1,50 & 1,00 \\ \hline
 \multicolumn{1}{l?}{\textsf{OCR}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
 \multicolumn{1}{l?}{\textsf{Explicit Content Detection}} & Gratis & 1,50\footnote{\label{explicit}Gratis se utilizzato assieme a \textsf{Label Detection}}

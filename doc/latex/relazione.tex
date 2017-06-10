@@ -1,3 +1,8 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX root = relazione.tex
+% !TeX spellcheck = it_IT
+
 \documentclass[fleqn,a4paper,11pt]{article}
 \usepackage[italian]{babel}
 \usepackage[utf8x]{inputenc}
@@ -14,7 +19,7 @@
 \usepackage{url}
 \usepackage{listings}
 \lstset{mathescape,columns=fullflexible,basicstyle=\fontfamily{lmvtt}\selectfont}
-\usepackage{caption} 
+\usepackage{caption}
 \setlength\abovecaptionskip{.4em}
 \setlength\belowcaptionskip{.8em}
 \usepackage{hyperref}
@@ -32,12 +37,12 @@
 \newcommand\DRule{\rule{\textwidth}{.4pt}\\[\dimexpr-\baselineskip+1mm+2pt] \rule{\textwidth}{2pt}}
 \usepackage{titlesec}
 \titleformat{\chapter}[hang]
-{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter:}{.3em}{} 
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter:}{.3em}{}
 %\titlespacing*{<command>}{<left>}{<before-sep>}{<after-sep>}
 \titlespacing*{\chapter}
 {0pt}{5.5ex plus 1ex minus .2ex}{3.3ex plus .2ex}
 
-\graphicspath{{img/}}
+\graphicspath{{../img/}}
 
 \begin{document}
 
@@ -46,9 +51,9 @@
 \begin{center}
 	\begin{minipage}{6in}
   		\centering
-  		\raisebox{-0.5\height}{\includegraphics[height=80px]{img/pollo.png}}
+  		\raisebox{-0.5\height}{\includegraphics[height=80px]{pollo.png}}
   		\hspace*{1.6in}
-  		\raisebox{-0.5\height}{\includegraphics[height=20px]{img/logoDM.png}}
+  		\raisebox{-0.5\height}{\includegraphics[height=20px]{logoDM.png}}
   		%\hspace*{.35in}
 	\end{minipage}\\[1cm]
 % Upper part of the page
@@ -75,13 +80,13 @@
 \newpage
 
 % INTRO
-\input{capitolo1.tex} 
+\input{capitolo1.tex}
 
 % PANORAMICA
-\input{capitolo2.tex} 
+\input{capitolo2.tex}
 
 % MICROSOFT
-\input{capitolo3.tex} 
+\input{capitolo3.tex}
 
 % IBM
 \input{capitolo4.tex}

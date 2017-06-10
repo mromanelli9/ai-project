@@ -1,3 +1,8 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX root = relazione.tex
+% !TeX spellcheck = it_IT
+
 % AMAZON
 \section{Amazon Artificial Intelligence}
 Amazon Rekognition \cite{amazon-api} è il servizio di Amazon che permette di riconoscere oggetti, volti, scene, nelle immagini e molto altro.
@@ -8,7 +13,7 @@ Caratteristiche immagini:
 \begin{itemize}
 \item Metodo: dati grezzi (stream application/octet) o oggetto Amazon S3.
 \item Formati supportati: PNG, JPEG.
-\item Caratteristiche minime: 80x80 pixel. 
+\item Caratteristiche minime: 80x80 pixel.
 \item Dimensione massima: 5 MB (dati grezzi), 15 MB (oggetto Amazon S3).
 \item Massimo numero di immagini per collezione: un milione.
 \end{itemize}
@@ -63,4 +68,4 @@ Altrimenti:
 \item successivi 90 milioni di immagini: $0,60$ dollari ogni $1000$ immagini;
 \item oltre i 100 milioni di immagini: $0,40$ dollari ogni $1000$ immagini.
 \end{itemize}
-Inoltre utilizzando le API per il riconoscimento dei volti, il servizio memorizza ogni volta la rappresentazione vettoriale dei volti. Questo comporta dei costi pari a $0,01$ dollari per 1000 metadati memorizzati al mese.  
+Inoltre utilizzando le API per il riconoscimento dei volti, il servizio memorizza ogni volta la rappresentazione vettoriale dei volti. Questo comporta dei costi pari a $0,01$ dollari per 1000 metadati memorizzati al mese.
