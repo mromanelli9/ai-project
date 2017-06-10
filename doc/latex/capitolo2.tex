@@ -25,56 +25,51 @@ L'area \textit{linguaggio} permette di analizzare ed elaborare il linguaggio na
 La \textit{ricerca} permette di sfruttare le potenzialità del motore di ricerca offerto dalla compagnia stessa (se presente) o di eseguire ricerche avanzate all'interno di collezioni create appositamente.
 \textit{Tecniche di apprendimento} permette la fruizione di algoritmi e modelli, oltre che alla loro creazione, per l'apprendimento automatico ed approfondito.
 La macro area \textit{altro} comprende tutti quei servizi che non ricadono nelle aree precedentemente descritte, come ad esempio sistemi di raccomandazione o altro.
-Infine, la tabella \ref{tab:macro-aree} riassume i servivi offerti (ad alto livello) da ogni piattaforma, inseriti nelle macro aree di riferimento.
+Infine, la tabella~\ref{tab:macro-aree} riassume i servivi offerti (ad alto livello) da ogni piattaforma, inseriti nelle macro aree di riferimento.
 
 È necessario aggiungere, tuttavia, che questa classificazione vuole fornire solamente una visone generale e grandi linee dei servizi disponibili e non vuole essere esaustiva.
 Per l'offerta completa si rimanda alle rispettive documentazioni. Inoltre, l'assenza di voci in una macro area per una certa piattaforma non esclude la presenza di relativi servizi; potrebbero essere, infatti, presenti sotto altri nomi, piattaforme, framework o comunque presenti negli altri servizi.
 %
-%
-\begin{table}[!h]
+\begin{sidewaystable}
 \centering
-{\scriptsize
-\begin{tabularx}{.9\textwidth}{X?X|X|X|X}
-\toprule
-Macro aree & Microsoft Corporation & IBM & Amazon.com, Inc & Google Inc.\\ \hline
-\midrule
-\multicolumn{1}{l?}{Visione artificiale}
-& Computer Vision API, Content Moderator, Emotion API, Face API, Video API
-%& Computer Vision API & & &\\
-%& Content Moderator & & &\\
-%& Emotion API & & &\\
-%& Face API & & &\\
-%& Video API & & &\\
-& Visual Recognition
-& Amazon Rekognition
-& Video Intelligence API, Vision API \\ \hline
-\multicolumn{1}{l?}{Sintesi vocale}
-& Bing Speech API, Custom Speech Service, Speaker Recognition API
-& Speech to Text, Text To Speech
-& Amazon Polly
-& Speech API \\ \hline
-\multicolumn{1}{l?}{Linguaggio naturale}
-& Bing Spell Check API, Language Understanding Intelligent Service, Linguistic Analysis API, Text Analytics API, Translator API, Web Language Model API
-& AlchemyLanguage, Conversation, Dialog, Document Conversion, Language Translator, Natural Language Classifier, Natural Language Understanding, Personality Insights, Retrieve and Rank, Tone Analyzer
-& Amazon Lex
-& Natural Language API, Translation API \\ \hline
-\multicolumn{1}{l?}{Ricerca}
-& Bing Autosuggest API, Bing Image Search API, Bing News Search API, Bing Video Search API, Bing Web Search API, Academic Knowledge API, Knowledge Exploration Service
-& Discovery, Discovery News,
-& -
-& - \\ \hline
-\multicolumn{1}{l?}{Apprendimento}
-& -
-& -
-& Amazon Machine Learning, Apache Spark su Amazon EMR
-& Machine Learning Engine \\ \hline
-\multicolumn{1}{l?}{Altro}
-& Entity Linking Intelligence Service, QnA Maker, Recommendations API
-& Tradeoff Analytics
-& -
-& Jobs API \\ \hline
-\end{tabularx}}
 \caption{Tabella riassuntiva dei servizi offerti, raggruppati per macro aree.}
 \label{tab:macro-aree}
-\end{table}
-%
+{\scriptsize
+\resizebox{\linewidth}{!}{
+\begin{tabularx}{\textwidth}{c?l|l|l|l}
+\toprule
+Macro Aree          & Microsoft Cognitive Services               & Watson Services                & Amazon Artificial Intelligence & Google Cloud Machine Learning Services \\
+\midrule
+Visione artificiale & Computer Vision API                        & Visual Recognition             & Amazon Rekognition             & Video Intelligence API                 \\
+                    & Content Moderator                          &                                &                                & Vision API                             \\
+                    & Emotion API                                &                                &                                &                                        \\
+                    & Face API                                   &                                &                                &                                        \\
+                    & Video API                                  &                                &                                &                                        \\ \hline
+Sintesi vocale      & Bing Speech API                            & Speech to Text                 & Amazon Polly                   & Speech API                             \\
+                    & Custom Speech Service                      & Text to Speech                 &                                &                                        \\
+                    & Speaker Recognition API                    &                                &                                &                                        \\ \hline
+Linguaggio naturale & Bing Spell Check API                       & AlchemyLanguage                & Amazon Lex                     & Natural Language API                   \\
+                    & Language Understanding Intelligent Service & Conversation                   &                                & Translation API                        \\
+                    & Linguistic Analysis API                    & Dialog                         &                                &                                        \\
+                    & Text Analytics API                         & Document Conversion            &                                &                                        \\
+                    & Translator API                             & Language Translator            &                                &                                        \\
+                    & Web Language Model API                     & Natural Language Classifier    &                                &                                        \\
+                    &                                            & Natural Language Understanding &                                &                                        \\
+                    &                                            & Personality Insights           &                                &                                        \\
+                    &                                            & Retrieve and Rank              &                                &                                        \\
+                    &                                            & Tone Analyzer                  &                                &                                        \\ \hline
+Ricerca             & Bing Autosuggest API                       & Discovery                      & -                              & -                                      \\
+                    & Bing Image Search API                      & Discovery News                 &                                &                                        \\
+                    & Bing News Search API                       &                                &                                &                                        \\
+                    & Bing Video Search API                      &                                &                                &                                        \\
+                    & Bing Web Search API                        &                                &                                &                                        \\
+                    & Academic Knowledge API                     &                                &                                &                                        \\
+                    & Knowledge Exploration Service              &                                &                                &                                        \\ \hline
+Apprendimento       & -                                          & -                              & Amazon Machine Learning        & Machine Learning Engine                \\
+                    &                                            &                                & Apache Spark su Amazon EMR     &                                        \\ \hline
+Altro               & Entity Linking Intelligence Service        & Tradeoff Analytics             & -                              & Jobs API                               \\
+                    & QnA Maker                                  &                                &                                &                                        \\
+                    & Recommendations API                        &                                &                                &										\\
+\bottomrule
+\end{tabularx}}}
+\end{sidewaystable}
