@@ -28,14 +28,14 @@ Altro:
 \footnote{Per conoscere in dettaglio le aree visitare la pagina: \url{https://azure.microsoft.com/en-us/regions/}.}.
 \end{itemize}
 %
-\subsection{Computer Vision API}
+\subsection{Computer Vision API}\label{subsec:computer-vision-api}
 In base allo scopo per cui si vuole analizzare l'immagine, le \textit{Computer Vision API} \cite{microsoft-api} mettono a disposizione diversi metodi per ottenere le informazioni desiderate.
 
 \paragraph{Tagging} Le API ritornano un insieme di etichette (in formato JSON) che descrivono gli oggetti presenti nell'immagine, come oggetti, esseri viventi, azioni, paesaggi; per ogni etichetta viene anche fornito il livello di \textit{confidence} (affidabilità). I tag non sono in alcun modo organizzati fra loro e non esiste nessun tipo di ereditarietà.
 Nel caso un tag sia ambiguo viene fornito in aggiunta un \textit{hint} che ne spiega il contenuto.
 Al momento la sola lingua supportata è l'inglese.
 
-\paragraph{Classificazione} L'immagine viene classificata in categorie che seguono una tassonomia con ereditarietà di tipo padre-figlio. Questa tassonomia prevede 86 categorie\footnote{\url{https://www.microsoft.com/cognitive-services/en-us/Computer-Vision-API/documentation/Category-Taxonomy}} e classifica gli elementi visivi in modo più o meno specifico.
+\paragraph{Classificazione} L'immagine viene classificata in categorie che seguono una tassonomia con ereditarietà di tipo padre-figlio. Questa tassonomia prevede 86 categorie\footnote{\url{https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/category-taxonomy}} e classifica gli elementi visivi in modo più o meno specifico.
 
 \paragraph{Identificazione del tipo} E' possibile classificare l'immagine come in bianco o nero o a colori, se è un disegno o se è del tipo \textit{clip-art}; in quest'ultimo caso viene fornito un livello di qualità dell'immagine, compreso fra 0 e 3.
 
