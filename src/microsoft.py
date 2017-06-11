@@ -80,24 +80,41 @@ def renderResultOnImage( result, filename ):
 	cv.waitKey(0)
 	cv.destroyAllWindows()
 
-def main():
+def main(mode):
 	"""
-	Analyse an image (having in mind the project goal)
+	Wraps several methods for analyse an image (having in mind the project goal)
+
+	Parameters:
+	mode: select the type of operation to perform
+		0: Analyze image (Tags and Classification)
+		1: OCR
 
 	[Documentation can be found at: https://goo.gl/htwlmc]
 	"""
 
-	print("[+] Mode: Analyze Image.")
+	operation = None	# define which API endpoint will be used
+	params = None	# Computer Vision parameters
 
-
-	# define which API endpoint will be used
-	operation = "analyze"
-
-	# Computer Vision parameters
-	params = {
-		"visualFeatures" : "Tags,Categories,Description",
-		"language" : "en"
-	}
+	if mode == 0:
+		print("[+] Mode: Analyze Image.")
+		operation = "analyze"
+		params = {
+			"visualFeatures" : "Tags,Categories,Description",
+			"language" : "en"
+		}
+	# This won't work, you need another key
+	# elif mode == 1:
+	# 	print("[+] Mode: Face Detection.")
+	# 	_url = _url_face_api
+	# 	operation = "detect"
+	# 	params = {
+	# 		"returnFaceId": "true",
+	# 		"returnFaceLandmarks": "true",
+	# 		"returnFaceAttributes": "true"
+	# 	}
+	else:
+	 	print("[!] Error: undefined operation.")
+		sys.exit(1)
 
 	headers = dict()
 	headers["Ocp-Apim-Subscription-Key"] = _key
@@ -118,6 +135,7 @@ def main():
 
 if __name__ == "__main__":
 	_url = "https://westus.api.cognitive.microsoft.com/vision/v1.0/"
+	_url_face_api = "https://westus.api.cognitive.microsoft.com/face/v1.0/"
 	_key = "***REMOVED***"        # my primary key
 	_maxNumRetries = 10                            	# not used
 
@@ -129,4 +147,4 @@ if __name__ == "__main__":
 		_localImage = str(sys.argv[1])
 
 	# Set parameters and then call the API
-	main()
+	main(1)
