@@ -64,3 +64,61 @@ considerando che una caratteristica offerta (in tutte le piattaforme) è il rico
 \end{center}
 \end{figure}
 %
+\paragraph{Microsoft}In questo caso sono state utilizzate le Face API in modalità \textit{Rilevamento volti}.
+\begin{figure}[!h]
+\begin{center}
+	\includegraphics[scale=.5]{Sylvester-Stallone-making-it-rain-on-pal-Arnold-Schwarzenegger_post.png}
+{\scriptsize \caption{Immagine riferimento dove sono stati evidenziati i volti riscontrati.}
+\label{fig:stallone-post}}
+\end{center}
+\end{figure}
+\begin{lstlisting}[style=myJSON, caption=Risultato dell'interrogazione con le Face API., label=lst:risultati-microsoft-volti]
+	{
+	   "FaceId":"e93d3fd5-56d8-4009-b1ba-341d29520262",
+	   "FaceRectangle":{ "Top":45, "Left":84, "Width":77, "Height":77 },
+	   "FaceAttributes":{
+	      "Hair":{
+	         "Bald":0.03,
+	         "Invisible":false,
+	         "HairColor":[
+	            { "Color":"brown",
+	               "Confidence":0.8 },
+	            { "Color":"gray",
+	               "Confidence":0.58 }]},
+	      "Smile":0.062,
+	      "HeadPose":{ "Pitch":0.0, "Roll":7.9, "Yaw":2.2 },
+	      "Gender":"male",
+	      "Age":59.5,
+	      "Glasses":"Sunglasses",
+	      "Emotion":{
+	         "Anger":0.001,
+	         "Contempt":0.0,
+	         "Disgust":0.0,
+	         "Fear":0.0,
+	         "Happiness":0.062,
+	         "Neutral":0.901,
+	         "Sadness":0.034,
+	         "Surprise":0.002
+	      }
+	   },
+	   "FaceLandmarks":{
+	      "PupilLeft":{
+	         "X":105.7,
+	         "Y":65.0 },
+	      "PupilRight":{
+	         "X":143.0,
+	         "Y":69.5 },
+	      "NoseTip":{
+	         "X":122.4,
+	         "Y":84.8 },
+	      "MouthLeft":{
+	         "X":102.9,
+	         "Y":98.1 },
+	      "MouthRight":{
+	         "X":136.1,
+	         "Y":102.0 },
+	   }
+	}
+\end{lstlisting}
+%
+Anche in questo caso sono state omesse alcune voci ed è stato riportato solamente il risultato per il primo volto (persona a sinistra).
