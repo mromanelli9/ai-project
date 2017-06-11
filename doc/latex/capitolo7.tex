@@ -23,44 +23,44 @@ L'immagine presa come riferimento è la figura~\ref{fig:scontrino} che raffigura
 \end{figure}
 %
 \paragraph{Microsoft} Utilizzando le Computer Vision API con i metodi di tagging, classificazione e generazione di descrizioni,
-il risultato ottenuto è:
-
-\label{lst:risultati-microsoft}
-\begin{lstlisting}[style=myJSON]
+il risultato ottenuto è\footnote{Alcuni campi, non direttamente rilevanti, sono stati omessi per faciltare la lettura.}:
+%
+\begin{lstlisting}[style=myJSON, caption=Risultato dell'interrogazione con le Computer Vision API., label=lst:risultati-microsoft-scontrino]
 {
-   'categories':[
-      {
-         'name':'text_men',
+   'categories':[{
+         'name':'text_menu',
          'score':0.85546875
-      }
-   ],
+    }],
    'description':{
-      'captions':[
-         {
+      'captions':[{
             'confidence':0.6941834877564524,
-            'text':'a close p of a receipt'
-         }
-      ],
-      'tags':[
-         'text',
-         'receipt'
-      ]
+            'text':'a close up of a receipt'
+         }],
+      'tags':['text', 'receipt']
    },
-   'metadata':{
-      'format':'Jpeg',
-      'height':450,
-      'width':270
-   },
-   'reqestId':'7249a5f3-3129-4821-aae1-d767a4a3140a',
    'tags':[
-      {
-         'confidence':0.9944400787353516,
-         'name':'text'
-      },
-      {
-         'confidence':0.9528059959411621,
-         'name':'receipt'
-      }
-   ]
+      {'confidence':0.9944400787353516,
+         'name':'text'},
+      {'confidence':0.9528059959411621,
+         'name':'receipt'}]
 }
 \end{lstlisting}
+%
+Come si può vedere, l'immagine viene classificata come \textsf{menu} nella categoria \textsf{text} (della macro-categoria \textsf{object});
+considerando che in tutto ci sono meno di 90 categorie (per la tassonomia vedere la sezione~\ref{subsec:computer-vision-api}), il risultato è piuttosto soddisfacente.
+Descrive l'immagine come: ``Un primo piano di uno scontrino'', quindi è decisamente esatta.
+Infine, fornisce l'etichetta \textsf{testo} con un livello di affidabilità del $99,44\%$ e \textsf{scontrino} con il $95,28\%$.
+Riassumendo, il sistema riconosce perfettamente l'oggetto nel suo complesso, anche se non ci fornisce particolari dettagli.
+%%
+\subsection{Riconoscimento di volti}\label{subsec:riconscimento-volti}
+In questo caso, l'immagine~\ref{fig:stallone} raffigura due volti famosi. Questo forse potrebbe facilitare il riconoscimento
+considerando che una caratteristica offerta (in tutte le piattaforme) è il riconoscimento di persone famose.
+%
+\begin{figure}[!h]
+\begin{center}
+	\includegraphics[scale=.5]{Sylvester-Stallone-making-it-rain-on-pal-Arnold-Schwarzenegger.jpg}
+{\scriptsize \caption{Immagine usata come riferimento per il riconscimento di volti.}
+\label{fig:stallone}}
+\end{center}
+\end{figure}
+%
