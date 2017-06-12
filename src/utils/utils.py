@@ -10,7 +10,8 @@
 
 import numpy as np
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel
-from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtGui import QIcon, QPixmap, QPen, QPainter
+from PyQt5 import QtCore
 from os.path import split, splitext, basename, join
 import sys
 
@@ -45,6 +46,8 @@ def displayImage(source, destination=None, surplus=None):
 	ex = App( source )
 	app.exec_()
 
+	return ex
+
 
 class App(QWidget):
 	"""
@@ -73,8 +76,27 @@ class App(QWidget):
 
 		# Create widget
 		label = QLabel( self )
-		pixmap = QPixmap( self.source )
-		label.setPixmap( pixmap )
-		self.resize( pixmap.width(), pixmap.height() )
+		self.pixmap = QPixmap( self.source )
+		label.setPixmap( self.pixmap )
+		self.resize( self.pixmap.width(), self.pixmap.height() )
 
 		self.show()
+
+	def drawRectangle( self, p1, p2 ):
+		x1, y1 = p1
+		x2, y2 = p2
+
+		# create painter instance with pixmap
+		self.painterInstance = QPainter( self.pixmap )
+
+		# set rectangle color and thickness
+		self.penRectangle = QPen( QtCore.Qt.red )
+		self.penRedBorder.setWidth( 3 )
+
+		# draw rectangle on painter
+		self.painterInstance.setPen( self.penRectangle )
+		self.painterInstance.drawRect( x1, y1, x2-x1, y2-y1 )
+
+		# set pixmap onto the label widget
+		self.ui.label_imageDisplay.setPixmap( self.pixmap )
+		self.ui.label_imageDisplay.show()
