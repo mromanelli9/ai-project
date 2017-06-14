@@ -9,7 +9,7 @@
 #==============================================================================
 
 #from utils import displayImage
-from utils import CVImage
+from utils import CVImage, isInRegion
 import sys
 
 
@@ -18,8 +18,17 @@ def main(argv):
 	print( "start" )
 
 	img = CVImage( argv[0] )
-	# renderedImage.openImage()
-	img.printInfo()
+	# img.showImage()
+
+	w = img.getWidth()
+	h = img.getHeight()
+
+	print( "%d x %d" % (w, h) )
+
+	img.drawRectangle( (50, 400), (500, 100), CVImage.BGR_COLOR_YELLOW, 2)
+
+	img.drawPoint( (500, 500), CVImage.BGR_COLOR_BLACK, 3)
+
 	img.showImage()
 
 	print( "end" )
