@@ -4,10 +4,12 @@
 #description     : Provides some utilities widely used by other modules.
 #author          : Marco Romanelli
 #date            : 14/06/2017
-#version         : 2
+#version         : 1
 #python_version  : 3.6.0
 #==============================================================================
 
+import numpy as np
+from os.path import split, splitext, basename, join
 import sys
 
 def splitFilename(filepath):
