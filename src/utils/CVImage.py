@@ -9,7 +9,7 @@
 #python_version  : 3.6.0
 #==============================================================================
 
-from utils.utils import splitFilename
+from utils.utils import splitFilename, isInRegion
 import cv2 as cv
 
 class CVImage():
@@ -26,6 +26,14 @@ class CVImage():
 		id = None
 		__class_counter = 0
 
+		# Colors
+		BGR_COLOR_BLUE = (255, 0, 0)
+		BGR_COLOR_YELLOW = (0, 255, 255)
+		BGR_COLOR_RED = (0, 0, 255)
+		BGR_COLOR_GREEN = (0, 255, 0)
+		BGR_COLOR_BLACK = (0, 0, 0)
+		BGR_COLOR_WHITE = (255, 255, 255)
+
 		def __init__( self, source, title=None ):
 			self.id = CVImage.__class_counter
 			CVImage.__class_counter += 1
@@ -38,6 +46,9 @@ class CVImage():
 
 			self.__source = source
 
+			# Create window
+			cv.namedWindow( "image", cv.WINDOW_NORMAL )
+
 			# Loads image as such including alpha channel
 			self.__image = cv.imread( self.__source, cv.IMREAD_UNCHANGED )
 
@@ -49,9 +60,6 @@ class CVImage():
 
 
 		def showImage( self ):
-			# Create window
-			cv.namedWindow( "image", cv.WINDOW_NORMAL )
-
 			# Resize the image
 			self.__image = cv.resize( self.__image, (self.__width, self.__height))
 
@@ -64,7 +72,7 @@ class CVImage():
 			# Destroy all the windows that has been created
 			cv.destroyAllWindows()
 
-		def drawRectangle( self, p1, p2 ):
+		def drawRectangle( self, p1, p2, color=BGR_COLOR_YELLOW, thickness=1 ):
 			"""
 			Draw a rectangle given two point p1=(x1, y1) and p2=(x2, y2) such that:
 				p1 ---------------- +
@@ -77,6 +85,10 @@ class CVImage():
 			x1, y1 = p1
 			x2, y2 = p2
 
+			# Check if the two points are admissibles
+			assert isInRegion( (self.__width, self.__height), p1 ), "[!] Error: (%d,%d) is not a feasibile point of the image." % p1
+			assert isInRegion( (self.__width, self.__height), p2 ), "[!] Error: (%d,%d) is not a feasibile point of the image." % p2
+
 			if (x1 > x2 ) and ( y1 < y2 ):
 				t = p2
 				p2 = p1
@@ -87,7 +99,20 @@ class CVImage():
 
 			print( p1, p2 )
 
-			cv.rectangle( self.__image, p1, p2, (0,255,0), 1 )
+			# Draw
+			cv.rectangle( self.__image, p1, p2, color, thickness )
+
+
+		def drawPoint( self, p1, color=BGR_COLOR_YELLOW, thickness=1 ):
+			"""
+			Draw a point
+			"""
+
+			# Check if the point is admissible
+			assert isInRegion( (self.__width, self.__height), p1 ), "[!] Error: (%d,%d) is not a feasibile point of the image." % p1
+
+			# Draw
+			cv.line( self.__image, p1, p1, color, thickness )
 
 
 		def printInfo( self ):
@@ -98,3 +123,11 @@ class CVImage():
 			print( " Width: %s " % self.__width )
 			print( " Height: %s " % self.__height )
 			print( " ----------------- " )
+
+
+		def getWidth( self ):
+			return self.__width
+
+
+		def getHeight( self ):
+			return self.__height
