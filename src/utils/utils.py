@@ -21,3 +21,15 @@ def splitFilename(filepath):
 	name, ext = splitext( basename( filename ) )
 
 	return path, name, ext
+
+
+def isInRegion( region, point ):
+	"""
+	Return true if the point is included in the space:
+		R = { p=(x, y) | 0 <= x <= region[0], 0 <= y <= region[1]
+	"""
+
+	width, height = region
+	x, y = point
+
+	return (0 <= x <= width) and (0 <= y <= height)
