@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 ## -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: t; tab-width: 4; coding: utf-8; -*-
-#title           : utils.py
+#title           : microsoft.py
 #description     : Uses Vision API and Face API to analyze an image.
 #author          : Marco Romanelli
 #date            : 15/06/2017
