@@ -49,8 +49,12 @@ def main(argv):
 	data = None
 	localImage = argv[0]
 
-	print( "[+] Init API." )
-	visual_recognition = VisualRecognitionV3( "2016-05-20", api_key=_api_key )
+	print( "[+] Init." )
+	visual_recognition = VisualRecognitionV3(
+		version="2016-05-20",
+		api_key=_api_key,
+		x_watson_learning_opt_out=True	# prevent watson to collect data
+	)
 
 	# Load raw image file into memory
 	data = None
