@@ -3,13 +3,26 @@
 
 from __future__ import print_function
 import sys
-#sys.path.append("/Users/Marco/anaconda2/lib/python2.7/site-packages")
 import time
 import requests
 import operator
-import numpy as np
 import pprint
-import cv2 as cv
+from utils import CVImage
+
+def getAPIInfo(mode):
+	data = {}
+
+	if mode == 0:
+		# Vision API
+		data["endpoint"] = "https://westus.api.cognitive.microsoft.com/vision/v1.0/"
+		data["key"] = "e444f0ab8bce4b888786b3631582519e" # Vision API key 1
+
+	else:
+		# Fase API
+		data["endpoint"] = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/"
+		data["key"] = "49494df0b3884884bd40c6a41c3aad54" # Vision API key 1
+
+	return data
 
 def processRequest( url, json, data, headers, params ):
 	"""
@@ -57,30 +70,7 @@ def processRequest( url, json, data, headers, params ):
 
 	return result
 
-def renderResultOnImage( result, filename ):
-	"""
-	Display the obtained results onto the input image
-	"""
-
-	#canvas = np.zeros((450, 270, 3), np.uint8)
-	#canvas = cv.imread(filename)
-	img = cv.imread(filename)
-
-	if ("regions" in result) and ("lines" in result["regions"][0]):
-		lines = result["regions"][0]["lines"]
-		for line in lines:
-			coordinates = map(int, line["boundingBox"].split(','))
-			top_left = (coordinates[0], coordinates[1])
-			bottom_right = (coordinates[0] + coordinates[2], coordinates[1] + coordinates[3])
-			print(top_left, bottom_right)
-			cv.rectangle(img, top_left, bottom_right, (0,255,0), 1)
-
-	cv.namedWindow('image', cv.WINDOW_NORMAL)
-	cv.imshow('Result', img)
-	cv.waitKey(0)
-	cv.destroyAllWindows()
-
-def main(mode):
+def analyzeImage(image, mode):
 	"""
 	Wraps several methods for analyse an image (having in mind the project goal)
 
@@ -102,28 +92,32 @@ def main(mode):
 			"visualFeatures" : "Tags,Categories,Description",
 			"language" : "en"
 		}
-	# This won't work, you need another key
-	# elif mode == 1:
-	# 	print("[+] Mode: Face Detection.")
-	# 	_url = _url_face_api
-	# 	operation = "detect"
-	# 	params = {
-	# 		"returnFaceId": "true",
-	# 		"returnFaceLandmarks": "true",
-	# 		"returnFaceAttributes": "true"
-	# 	}
+	elif mode == 1:
+		print("[+] Mode: Face Detection.")
+		operation = "detect"
+		params = {
+			"returnFaceId": "true",
+			"returnFaceLandmarks": "true",
+			"returnFaceAttributes": "age,gender,smile"
+		}
 	else:
-	 	print("[!] Error: undefined operation.")
+		print("[!] Error: undefined operation.")
 		sys.exit(1)
 
+	APIinfo = getAPIInfo(mode)	# Retrieve endpoint and key
+
 	headers = dict()
-	headers["Ocp-Apim-Subscription-Key"] = _key
-	headers["Content-Type"] = "application/json"
+	headers["Ocp-Apim-Subscription-Key"] = APIinfo["key"]
+	headers["Content-Type"] = "application/octet-stream"
 
-	json = { "url": _urlImage }
-	data = None
+	json = None
 
-	result = processRequest( _url + operation, json, data, headers, params )
+	# Load raw image file into memory
+	with open( image, "rb" ) as f:
+		data = f.read()
+
+	print( "[+] API request..." )
+	result = processRequest( APIinfo["endpoint"] + operation, json, data, headers, params )
 
 	if result is not None:
 		print("[+] Results:")
@@ -132,19 +126,83 @@ def main(mode):
 
 		#renderResultOnImage(result, _localImage)
 
+	return result
 
-if __name__ == "__main__":
-	_url = "https://westus.api.cognitive.microsoft.com/vision/v1.0/"
-	_url_face_api = "https://westus.api.cognitive.microsoft.com/face/v1.0/"
-	_key = "e444f0ab8bce4b888786b3631582519e"        # my primary key
+def parseFaceAPIResults(res):
+	dataToRender = {}
+
+	if "faceRectangle" in res.keys():
+		d = res["faceRectangle"]
+
+		l = int( d["left"] )
+		t = int( d["top"] )
+		w = int( d["width"] )
+		h = int( d["height"] )
+
+		p1 = ( l, t )
+		p2 = ( l + w, t + h )
+
+		new = {
+			"data" : [(p1, p2)],
+			"color" : CVImage.BGR_COLOR_YELLOW,
+			"thickness" : 2
+		}
+		dataToRender["rectangle"] = new
+
+	if "faceLandmarks" in res.keys():
+		d = res["faceLandmarks"]
+
+		points = []
+		# Loop over all the landmarks
+		for k in d:
+			c = d[k]
+			p = ( int(c['x']), int(c['y']) )
+			points.append(p)
+
+		new = {
+			"data" : points,
+			"color" : CVImage.BGR_COLOR_YELLOW,
+			"thickness" : 5
+		}
+		dataToRender["point"] = new
+
+	return dataToRender
+
+
+def main(argv):
 	_maxNumRetries = 10                            	# not used
 
-	_urlImage = "https://cdn.pbrd.co/images/OtNOX1gbi.jpg"
-	_localImage = None
+	# Default values
+	mode = 0
+	localImage = None
 
-	# if there is arguments use them instead of default values
-	if len(sys.argv) == 2:
-		_localImage = str(sys.argv[1])
+	# Check argument
+	assert len(argv) >= 1, "[!] Argument missing."
+
+	localImage = str(argv[0])
+
+	if len(argv) >= 2:
+		mode = int(argv[1])
 
 	# Set parameters and then call the API
-	main(1)
+	results = analyzeImage( localImage, mode )
+
+	# Load image
+	img = CVImage( localImage )
+
+	if mode == 1:
+		for el in results:
+			# Parse results
+			data = parseFaceAPIResults( el )
+
+			# Render results
+			print( "[+] Rendering data..." )
+			img.drawData(data)
+
+	# Display image
+	print( "[+] Opening image..." )
+	img.showImage()
+
+
+if __name__ == "__main__":
+	main(sys.argv[1:])
