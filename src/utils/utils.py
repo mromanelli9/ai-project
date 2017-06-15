@@ -9,7 +9,7 @@
 #==============================================================================
 
 import numpy as np
-from os.path import split, splitext, basename, join
+from os.path import split, splitext, basename
 import sys
 
 def splitFilename(filepath):
