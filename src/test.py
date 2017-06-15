@@ -9,7 +9,7 @@
 #==============================================================================
 
 #from utils import displayImage
-from utils import CVImage, isInRegion
+from utils import CVImage, isInRegion, changeCoordinates
 import sys
 
 
@@ -18,7 +18,6 @@ def main(argv):
 	print( "start" )
 
 	img = CVImage( argv[0] )
-	# img.showImage()
 
 	w = img.getWidth()
 	h = img.getHeight()
@@ -27,7 +26,7 @@ def main(argv):
 
 	img.drawRectangle( (50, 400), (500, 100), CVImage.BGR_COLOR_YELLOW, 2)
 
-	img.drawPoint( (500, 500), CVImage.BGR_COLOR_BLACK, 3)
+ 	img.drawPoint( (500, 500), CVImage.BGR_COLOR_BLACK, 3)
 
 	img.showImage()
 
