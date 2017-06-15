@@ -25,7 +25,7 @@ def getSignatureKey(key, date_stamp, regionName, serviceName):
 	return kSigning
 
 
-def main(source, dest):
+def analyzeImage(source):
 	# Read credentials from the environment
 	#access_key = os.environ.get('AWS_ACCESS_KEY_ID')
 	access_key = "AKIAIFIZSGMD55P254FA"
@@ -52,9 +52,8 @@ def main(source, dest):
 	region = 'us-east-1'
 
 	# This defines the service target and sub-service you want to hit
-	# In this case you want to use 'CompareFaces'
-	amz_target = 'RekognitionService.CompareFaces'
-
+	# In this case you want to use 'DetectFaces'
+	amz_target = 'RekognitionService.DetectFaces'
 
 	# Amazon content type - Rekognition expects 1.1 x-amz-json
 	content_type = 'application/x-amz-json-1.1'
@@ -72,38 +71,46 @@ def main(source, dest):
 	# list of signed headers
 	signed_headers = 'content-type;host;x-amz-date;x-amz-target'
 
-	# Our source image: http://i.imgur.com/OK8aDRq.jpg
-	with open(source, 'rb') as source_image:
-		source_bytes = base64.b64encode(source_image.read())
+	# Our source image: -
+	with open( source, "rb" ) as source_image:
+		# source_bytes = base64.b64encode(source_image.read())
+		source_bytes = base64.b64encode( source_image.read() )
 
-	# Our target image: http://i.imgur.com/Xchqm1r.jpg
-	with open(dest, 'rb') as target_image:
-		target_bytes = base64.b64encode(target_image.read())
+	base64_string = source_bytes.decode( "utf-8" )
 
 	# here we build the dictionary for our request data
 	# that we will convert to JSON
 	request_dict = {
-			'SimilarityThreshold': 75.0,
-			'SourceImage': {
-				'Bytes': source_bytes
-			},
-			'TargetImage': {
-				'Bytes': target_bytes
-			}
+	 	"Attributes": [ "DEFAULT" ],
+		"Image": {
+			'Bytes': base64_string
+		}
 	}
+
+	# If we want to use a S3 oject
+	# request_dict = {
+	#  	"Attributes": [ "DEFAULT" ],
+	# 	"Image": {
+	# 		 "S3Object": {
+	# 	         "Bucket": "unipd-ia-project",
+	# 	         "Name": "face.jpg"
+	# 	         # "Version": "Jun 15, 2017 11:34:26 AM"
+	# 	      }
+	# 	}
+	# }
 
 	# Convert our dict to a JSON string as it will be used as our payload
 	request_parameters = json.dumps(request_dict)
 
 	# Generate a hash of our payload for verification by Rekognition
-	payload_hash = hashlib.sha256(request_parameters).hexdigest()
+	payload_hash = hashlib.sha256(request_parameters.encode('utf-8')).hexdigest()
 
 	# All of this is
 	canonical_request = method + '\n' + canonical_uri + '\n' + canonical_querystring + '\n' + canonical_headers + '\n' + signed_headers + '\n' + payload_hash
 
 	algorithm = 'AWS4-HMAC-SHA256'
 	credential_scope = date_stamp + '/' + region + '/' + service + '/' + 'aws4_request'
-	string_to_sign = algorithm + '\n' +  amz_date + '\n' +  credential_scope + '\n' +  hashlib.sha256(canonical_request).hexdigest()
+	string_to_sign = algorithm + '\n' +  amz_date + '\n' +  credential_scope + '\n' +  hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()
 
 	signing_key = getSignatureKey(secret_key, date_stamp, region, service)
 	signature = hmac.new(signing_key, (string_to_sign).encode('utf-8'), hashlib.sha256).hexdigest()
@@ -127,5 +134,15 @@ def main(source, dest):
 	print('Response body:\n{}'.format(formatted_text))
 
 
+def main(argv):
+	localImage = argv[0]
+
+	print( "[+] Calling API..." )
+
+	analyzeImage( localImage )
+
+
 if __name__ == '__main__':
-	main(sys.argv[1], sys.argv[2])
+	main(sys.argv[1:])
+
+	print
