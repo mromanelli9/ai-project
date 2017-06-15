@@ -10,6 +10,7 @@ import json
 import sys
 
 import requests
+from utils import CVImage, changeCoordinates
 
 # Key derivation functions
 # http://docs.aws.amazon.com/general/latest/gr/signature-v4-examples.html#signature-v4-examples-python
@@ -133,14 +134,71 @@ def analyzeImage(source):
 	print('Response code: {}\n'.format(r.status_code))
 	print('Response body:\n{}'.format(formatted_text))
 
+	return json.loads(r.text)
+
+def parseDetectFacesResults(data, image_width, image_height):
+	dataToRender = {}
+
+	d = data["FaceDetails"]
+
+	list_of_rect = []
+	list_of_points = []
+
+	for el in d:
+		current = el["BoundingBox"]
+
+		l = int( float( current["Left"] ) * image_width )
+		t = int( float( current["Top"] ) * image_height )
+		w = int( float( current["Width"] ) * image_width )
+		h = int( float( current["Height"] ) * image_height )
+
+		p1 = ( l, t )
+		np1 = changeCoordinates( p1, (image_width, image_height) )
+		np2 = (np1[0] + w, np1[1] - h )
+
+		list_of_rect.append( (np1, np2) )
+
+		for lndm in el["Landmarks"]:
+			x = int( float( lndm["X"] ) * image_width )
+			y = int( float( lndm["Y"] ) * image_height )
+			np = changeCoordinates( (x, y), (image_width, image_height) )
+			list_of_points.append( np )
+
+	new = {
+		"data" : list_of_rect,
+		"color" : CVImage.BGR_COLOR_YELLOW,
+		"thickness" : 2
+	}
+	dataToRender["rectangle"] = new
+
+	new = {
+		"data" : list_of_points,
+		"color" : CVImage.BGR_COLOR_YELLOW,
+		"thickness" : 5
+	}
+	dataToRender["point"] = new
+
+	return dataToRender
+
 
 def main(argv):
 	localImage = argv[0]
 
 	print( "[+] Calling API..." )
 
-	analyzeImage( localImage )
+	res = analyzeImage( localImage )
 
+	# Load image
+	img = CVImage( localImage )
+
+	# Render results
+	print( "[+] Rendering data..." )
+	renderedRes = parseDetectFacesResults( res, img.getWidth(), img.getHeight() )
+	img.drawData( renderedRes )
+
+	# Display image
+	print( "[+] Opening image..." )
+	img.showImage()
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
