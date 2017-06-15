@@ -10,6 +10,7 @@
 #==============================================================================
 
 from utils.utils import splitFilename, isInRegion
+from os.path import join as os_join
 import cv2 as cv
 
 class CVImage():
@@ -67,7 +68,18 @@ class CVImage():
 			cv.imshow( self.__title, self.__image )
 
 			# Display the image infinitely until any keypress
-			cv.waitKey( 0 )
+			k = cv.waitKey( 0 ) & 0xFF		# fix for 64-bit machines
+
+			if k == 27:
+				# wait for ESC key to exit
+				pass
+			elif k == ord('s'):
+				# wait for 's' key to save and exit
+				path, name, ext = splitFilename( self.__source )
+
+				out_name = name + "_out" + ext
+
+				cv.imwrite( os_join( path, out_name ), self.__image )
 
 			# Destroy all the windows that has been created
 			cv.destroyAllWindows()
@@ -97,8 +109,6 @@ class CVImage():
 				x1, y1 = p1
 				x2, y2 = p2
 
-			print( p1, p2 )
-
 			# Draw
 			cv.rectangle( self.__image, p1, p2, color, thickness )
 
@@ -113,6 +123,47 @@ class CVImage():
 
 			# Draw
 			cv.line( self.__image, p1, p1, color, thickness )
+
+
+		def drawData( self, data ):
+			"""
+			Draw multiple figures. Data format example:
+			Data = {
+					"rectangle" : {
+								"data" : [((148, 646), (237, 557))],
+								"color" : CVImage.BGR_COLOR_YELLOW,
+								"thickness" : 2
+					},
+					"point" : {
+						"data" : [(200, 200)],
+						"color" : CVImage.BGR_COLOR_YELLOW,
+						"thickness" : 5
+					}
+				}
+			"""
+
+			# Loop
+			for key in data.keys():
+				assert (key == "rectangle") or (key == "point"), "[!] Error: data not valid."
+
+				# If rectangles
+				if key == "rectangle":
+					d = data["rectangle"]
+					color = d["color"]
+					tn = int( d["thickness"] )
+
+					for el  in d["data"]:
+						p1, p2 = el
+						self.drawRectangle( p1, p2, color, tn )
+
+				# If point
+				if key == "point":
+					d = data["point"]
+					color = d["color"]
+					tn = int( d["thickness"] )
+
+					for p in d["data"]:
+						self.drawPoint( p, color, tn )
 
 
 		def printInfo( self ):
