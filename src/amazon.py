@@ -15,9 +15,8 @@ import hashlib
 import hmac
 import json
 import sys
-
 import requests
-from utils import CVImage, changeCoordinates
+from utils import CVImage
 
 # Key derivation functions
 # http://docs.aws.amazon.com/general/latest/gr/signature-v4-examples.html#signature-v4-examples-python
@@ -89,7 +88,7 @@ def analyzeImage(source):
 	# here we build the dictionary for our request data
 	# that we will convert to JSON
 	request_dict = {
-	 	"Attributes": [ "DEFAULT" ],
+		"Attributes": [ "DEFAULT" ],
 		"Image": {
 			'Bytes': base64_string
 		}
@@ -160,16 +159,14 @@ def parseDetectFacesResults(data, image_width, image_height):
 		h = int( float( current["Height"] ) * image_height )
 
 		p1 = ( l, t )
-		np1 = changeCoordinates( p1, (image_width, image_height) )
-		np2 = (np1[0] + w, np1[1] - h )
+		p2 = ( l + w, l + h)
 
-		list_of_rect.append( (np1, np2) )
+		list_of_rect.append( (p1, p2) )
 
 		for lndm in el["Landmarks"]:
 			x = int( float( lndm["X"] ) * image_width )
 			y = int( float( lndm["Y"] ) * image_height )
-			np = changeCoordinates( (x, y), (image_width, image_height) )
-			list_of_points.append( np )
+			list_of_points.append( (x,y) )
 
 	new = {
 		"data" : list_of_rect,
