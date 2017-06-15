@@ -33,3 +33,15 @@ def isInRegion( region, point ):
 	x, y = point
 
 	return (0 <= x <= width) and (0 <= y <= height)
+
+
+def changeCoordinates(point, region):
+	""""
+	Change coordinates of a point p:
+		top-left -> bottom-left
+	"""
+
+	width, height = region
+	x, y = point
+
+	return (x, height - y )
