@@ -38,7 +38,7 @@ def parseDetectFacesResults(data):
 	new = {
 		"data" : list_of_rect,
 		"color" : CVImage.BGR_COLOR_YELLOW,
-		"thickness" : 2
+		"thickness" : 1
 	}
 	dataToRender["rectangle"] = new
 
@@ -48,7 +48,7 @@ def parseDetectFacesResults(data):
 def main(argv):
 	data = None
 	localImage = argv[0]
-	mode = 0 if len(argv) == 2 else argv[1]
+	mode = (0, 1)[len(argv) >= 2]
 
 	print( "[+] Init." )
 	visual_recognition = VisualRecognitionV3(
