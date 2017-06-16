@@ -32,7 +32,7 @@ def getSignatureKey(key, date_stamp, regionName, serviceName):
 	return kSigning
 
 
-def analyzeImage(source):
+def analyzeImage(source, mode):
 	# Read credentials from the environment
 	#access_key = os.environ.get('AWS_ACCESS_KEY_ID')
 	access_key = "AKIAIFIZSGMD55P254FA"
@@ -59,8 +59,14 @@ def analyzeImage(source):
 	region = 'us-east-1'
 
 	# This defines the service target and sub-service you want to hit
-	# In this case you want to use 'DetectFaces'
-	amz_target = 'RekognitionService.DetectFaces'
+	if mode == 0:
+		# We use 'DetectLabels'
+		print( "[+] Mode: DetectLabels.")
+		amz_target = 'RekognitionService.DetectLabels'
+	elif mode == 1:
+		# In this case you want to use 'DetectFaces'
+		print( "[+] Mode: DetectFaces.")
+		amz_target = 'RekognitionService.DetectFaces'
 
 	# Amazon content type - Rekognition expects 1.1 x-amz-json
 	content_type = 'application/x-amz-json-1.1'
@@ -87,24 +93,23 @@ def analyzeImage(source):
 
 	# here we build the dictionary for our request data
 	# that we will convert to JSON
-	request_dict = {
-		"Attributes": [ "DEFAULT" ],
-		"Image": {
-			'Bytes': base64_string
+	request_dict = {}
+	if mode == 0:
+		request_dict = {
+			"Attributes": [ "DEFAULT" ],
+			"Image": {
+				'Bytes': base64_string
+			}
 		}
-	}
+	elif mode == 1:
+		request_dict = {
+			"Image": {
+				'Bytes': base64_string
+			},
+			"MaxLabels": 5,	# Maximum number of labels you want the service to return in the response.
+			"MinConfidence" : 75	# Specifies the minimum confidence level for the labels to return.
+		}
 
-	# If we want to use a S3 oject
-	# request_dict = {
-	#  	"Attributes": [ "DEFAULT" ],
-	# 	"Image": {
-	# 		 "S3Object": {
-	# 	         "Bucket": "unipd-ia-project",
-	# 	         "Name": "face.jpg"
-	# 	         # "Version": "Jun 15, 2017 11:34:26 AM"
-	# 	      }
-	# 	}
-	# }
 
 	# Convert our dict to a JSON string as it will be used as our payload
 	request_parameters = json.dumps(request_dict)
@@ -187,22 +192,24 @@ def parseDetectFacesResults(data, image_width, image_height):
 
 def main(argv):
 	localImage = argv[0]
+	mode = (0, 1)[len(argv) >= 2]
 
 	print( "[+] Calling API..." )
 
-	res = analyzeImage( localImage )
+	res = analyzeImage( localImage, mode )
 
-	# Load image
-	img = CVImage( localImage )
+	if mode == 1:
+		# Load image
+		img = CVImage( localImage )
 
-	# Render results
-	print( "[+] Rendering data..." )
-	renderedRes = parseDetectFacesResults( res, img.getWidth(), img.getHeight() )
-	img.drawData( renderedRes )
+		# Render results
+		print( "[+] Rendering data..." )
+		renderedRes = parseDetectFacesResults( res, img.getWidth(), img.getHeight() )
+		img.drawData( renderedRes )
 
-	# Display image
-	print( "[+] Opening image..." )
-	img.showImage()
+		# Display image
+		print( "[+] Opening image..." )
+		img.showImage()
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
