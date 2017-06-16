@@ -79,7 +79,7 @@ Non è consigliabile l'utilizzo applicativo e/o in applicazione critiche.
 La Cloud Vision API fornisce diversi metodi per analizzare un'immagine.
 Ad ogni metodo corrisponde una tariffa che viene applicata ad ogni utilizzo su un'immagine, chiamato \textit{unità};
 se, ad esempio, due metodi sono applicati alla stessa immagine allora ai fini tariffari verranno conteggiati separatamente.
-Il prezzo è determinato dal numero di unità per mese e il costo per ogni metodo è indicato per 1000 unità/mese in dollari, come indicato in tabella \ref{google-tariffe}.
+Il prezzo è determinato dal numero di unità per mese e il costo per ogni metodo è indicato per 1000 unità/mese in dollari, come indicato in tabella \ref{tab:google-tariffe}.
 %
 \begin{table}[!h]
 \centering
@@ -88,17 +88,17 @@ Il prezzo è determinato dal numero di unità per mese e il costo per ogni metod
 \toprule
 Metodo & 1-1K unità/mese & 1K-1M unità/mese & 1M-5M unità/mese & 5M-20M unità/mese \\ \hline
 \midrule
-\multicolumn{1}{l?}{\textsf{Label Detection}} & Gratis & 1,50 & 1,50 & 1,00 \\ \hline
-\multicolumn{1}{l?}{\textsf{OCR}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
-\multicolumn{1}{l?}{\textsf{Explicit Content Detection}} & Gratis & 1,50\footnote{\label{explicit}Gratis se utilizzato assieme a \textsf{Label Detection}}
-& 1,50\textsuperscript{\ref{explicit}} & 0,60\textsuperscript{\ref{explicit}} \\ \hline
-\multicolumn{1}{l?}{\textsf{Facial Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
-\multicolumn{1}{l?}{\textsf{Landmark Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
-\multicolumn{1}{l?}{\textsf{Logo Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
-\multicolumn{1}{l?}{\textsf{Image Properties}} & Gratis & 1,50 & 1,50 & 0,60 \\ \hline
-\multicolumn{1}{l?}{\textsf{Web Detection}} & Gratis & 3,50 & 3,50 & n.d.\footnote{\label{explicit} Contattare Google per maggiori informazioni.} \\ \hline
-\multicolumn{1}{l?}{\textsf{Web Detection}} & Gratis & 3,50 & 3,50 & n.d.\textsuperscript{\ref{explicit}} \\ \hline
+\multicolumn{1}{l?}{\textsf{Label Detection}} & Gratis & 1,50 & 1,50 & 1,00 \\
+\multicolumn{1}{l?}{\textsf{OCR}} & Gratis & 1,50 & 1,50 & 0,60 \\
+\multicolumn{1}{l?}{\textsf{Explicit Content Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\
+\multicolumn{1}{l?}{\textsf{Facial Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\
+\multicolumn{1}{l?}{\textsf{Landmark Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\
+\multicolumn{1}{l?}{\textsf{Logo Detection}} & Gratis & 1,50 & 1,50 & 0,60 \\
+\multicolumn{1}{l?}{\textsf{Image Properties}} & Gratis & 1,50 & 1,50 & 0,60 \\
+\multicolumn{1}{l?}{\textsf{Web Detection}} & Gratis & 3,50 & 3,50 & n.d. \\
+\multicolumn{1}{l?}{\textsf{Web Detection}} & Gratis & 3,50 & 3,50 & n.d. \\
+\bottomrule
 \end{tabularx}}
-\caption{Tariffe per la Cloud Vision API}
+\caption{Tariffe per la Cloud Vision API.}
 \label{tab:google-tariffe}
 \end{table}
