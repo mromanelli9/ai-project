@@ -48,6 +48,7 @@ def parseDetectFacesResults(data):
 def main(argv):
 	data = None
 	localImage = argv[0]
+	mode = 0 if len(argv) == 2 else argv[1]
 
 	print( "[+] Init." )
 	visual_recognition = VisualRecognitionV3(
@@ -62,28 +63,38 @@ def main(argv):
 	fp = open( face_path, "rb" )
 
 	print( "[+] Calling API..." )
-	tres = visual_recognition.detect_faces( images_file=fp )
+
+	if mode == 0:
+		# Classify
+		tres = visual_recognition.classify( images_file=fp )
+	elif mode == 1:
+		# Detect faces
+		tres = visual_recognition.detect_faces( images_file=fp )
+
+
 	results = json.dumps( tres, indent=2 )
 	print( results )
 
-	# Load image
-	img = CVImage( localImage )
 
-	# Render results
-	print( "[+] Rendering data..." )
-	renderedRes = parseDetectFacesResults( tres )
-	img.drawData( renderedRes )
+	if mode == 1:
+		# Load image
+		img = CVImage( localImage )
 
-	# Display image
-	print( "[+] Opening image..." )
-	img.showImage()
+		# Render results
+		print( "[+] Rendering data..." )
+		renderedRes = parseDetectFacesResults( tres )
+		img.drawData( renderedRes )
+
+		# Display image
+		print( "[+] Opening image..." )
+		img.showImage()
 
 
 if __name__ == "__main__":
 	_api_key = "***REMOVED***"	# my API key
 
 	# Check argument
-	assert len(sys.argv) >= 2, "[!] Argument missing."
+	assert len(sys.argv) >= 3, "[!] Argument missing."
 
 	main(sys.argv[1:])
 
