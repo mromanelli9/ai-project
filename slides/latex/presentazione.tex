@@ -2,7 +2,11 @@
 % !TEX program = pdflatex
 % !TEX root = presentazione.tex
 % !TeX spellcheck = it_IT
-%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND MISC SETTINGS
+%----------------------------------------------------------------------------------------
+
 \documentclass[12pt]{beamer}
 %\documentclass[12pt,aspectratio=169]{beamer}
 %\documentclass[12pt,aspectratio=43]{beamer}
@@ -14,7 +18,7 @@
           titleline=true,% Show a line below the frame title.
           alternativetitlepage=true,% Use the fancy title page.
           titlepagelogo=unipd-pollo,% Logo for the first page.
-          watermark=logoDM% Watermark used in every page.
+          watermark=logo-unipd-int% Watermark used in every page.
           ]{Torino}
 
 \hypersetup{
@@ -35,6 +39,10 @@
 
 \graphicspath{{../img/}}
 
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
 \author[Romanelli,Marco]{Marco Romanelli\\[0.5\baselineskip]
 \tiny marco.romanelli.1@studenti.unipd.it\\[1.5\baselineskip]
 \scriptsize Corso di Intelligenza Artificiale}
@@ -45,15 +53,19 @@
 \date{\today}
 
 \begin{document}
+
 \section{Introduzione}\label{sec:intro}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% SLIDE 0: TITOLO
-%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t,plain]\titlepage\end{frame}
 
-\setcounter{framenumber}{0} % start from here
-%\include{contenuto}
+	%----------------------------------------------------------------------------------------
+	%	BODY
+	%----------------------------------------------------------------------------------------
+
+	\setcounter{framenumber}{0} % start from here
+	\include{panoramica}
+
+	%----------------------------------------------------------------------------------------
+	%	END
+	%----------------------------------------------------------------------------------------
 
 \end{document}
