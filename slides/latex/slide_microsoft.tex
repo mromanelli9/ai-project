@@ -1,0 +1,35 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX root = presentazione.tex
+% !TeX spellcheck = it_IT
+%
+\begin{frame}[t]{Microsoft Computer Vision API}
+\begin{itemize}
+	\item Riconoscimento elementi dell'immagine
+	\item Classificazione
+	\item Riconoscimento volti
+	\item Riconoscimento del testo
+	\item Generazione di descrizioni
+	\item Riconoscimento contenuti non adatti ai minori
+	\item Altro:
+	\begin{itemize}
+		\item Creazione anteprime
+		\item Identificazione tipo, colori e qualità immagine
+		\item Estensione classificatore
+	\end{itemize}
+\end{itemize}
+\end{frame}
+%
+%----------------------------------------------------------------------------------------
+%	APPUNTI:
+% 		- elementi come: oggetti, esseri viventi, azioni; oltre 2000
+%			-ritorna un insieme di etichette (in formato JSON) che descrivono gli oggetti presenti nell’immagine
+%		- classificazione secondo una tassonomia composta da 86 categorie
+%		- identifica la posizione del volto e età/sesso
+%		- testo presente nell'immagine e testo scritto a mano
+%		- frase/i (in inglese) che descrive l'immagine
+%		- le varie categorie comprendono gruppi per contenuti e non adatti a minori
+%		- Estensione classificatore (Contenuto personalizzato):
+%			- servirebbe appunto per estendere la tassonomia predefinita
+%			- ad oggi è supportato solo: riconscimento personaggi famosi e oggetti di interesse (landmark)
+%----------------------------------------------------------------------------------------
