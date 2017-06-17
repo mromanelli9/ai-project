@@ -1,0 +1,28 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX root = presentazione.tex
+% !TeX spellcheck = it_IT
+%
+\begin{frame}[t]{Microsoft Face API e Emotion API}
+\begin{itemize}
+	\item Rilevamento volti
+	\item Confronto fra due volti
+	\item Confronto/ricerca in un insieme di volti
+	\item Emozioni: rabbia, paura, felicità, espressione neutra, tristezza, sorpresa, disprezzo e disgusto
+\end{itemize}
+\end{frame}
+%
+%----------------------------------------------------------------------------------------
+%	APPUNTI:
+% 		- più approfondita dei volti rispetto alle Computer Vision API
+%			includendo anche funzioni di confronto e ricerca.
+%		- Rileva i volti presenti nell’immagine (fino a 64) e restituisce le coordinate
+%			del rettangolo che ingloba il viso, gli attributi facciali e i punti di riferimento.
+%		- attributi facciali: eta, sesso, sorriso, tipologia di barba, la posizione tridimensionale
+%			del volto (imbardata, rollio e beccheggio), la presenza di occhiali, le emozioni
+%			emozioni: rabbia, paura, felicità, espressione neutra, tristezza, sorpresa, disprezzo e disgusto
+%		- verifica volto: probabilità che due volti appartengano alla stessa persona
+%		- identicificazione volti: identificare le persone sulla base di un volto e di un database di persone
+%		- Ricerca volti simili: fornendo un volto obbiettivo e un insieme di candidati  all’interno del quale
+%			eseguire la ricerca, questa funzione restituisce un piccolo insieme di volti che assomiglia al volto obiettivo.
+%----------------------------------------------------------------------------------------
