@@ -134,7 +134,10 @@
   \llap{\insertlogo\hskip.5\beamer@leftmargin}%
   \vskip213px
   \if\beamer@decolines@watermark\@empty\else%
-  \llap{\includegraphics[height=40px,trim=0px -65px 60px 0px]{\beamer@decolines@watermarkorig}}%
+  \llap{
+  	\includegraphics[height=40px,trim=0px -65px 60px 0px]{\beamer@decolines@watermarkorig}
+	\includegraphics[width=80px,trim=0 -220px -50px 0px]{logoDM}
+	}%
   \fi
 }
 
