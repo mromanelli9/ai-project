@@ -55,7 +55,7 @@
       \else%
         \vskip0.25em%
         {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-      \fi%     
+      \fi%
     \end{beamercolorbox}%
     \vskip1em\par
     \begin{beamercolorbox}[sep=8pt,center,#1]{author}
@@ -83,7 +83,7 @@
     \begin{beamercolorbox}[wd=\paperwidth,ht=.4\paperheight,center,#1]{title page header}
 	  \footnotesize\usebeamercolor[fg]{subtitle}\insertsubtitle\par{}
 	  \vskip2em%
-      \usebeamerfont{title}\inserttitle\par%  
+      \usebeamerfont{title}\inserttitle\par%
       \vspace{.125\paperheight}%
     \end{beamercolorbox}%
     \vbox{}\vskip-\beamer@fancy@lineup%
@@ -142,6 +142,12 @@
           \end{beamercolorbox}\vskip0.5em
           {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
   \end{columns}
+  \vspace*{\fill}
+
+  % License
+  \begin{center}
+  {\tiny \scalebox{.8}{Questo lavoro è disponibile nei termini della licenza Creative Commons Attribution 4.0 International. \cc\by}}
+  \end{center}
 }
 
 \defbeamertemplate*{title page}{fancy}[1][]
@@ -177,4 +183,3 @@
 \fi
 
 \mode<all>
-
