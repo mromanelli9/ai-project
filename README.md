@@ -20,5 +20,5 @@ pdflatex relazione.tex
 Code:
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)] (LICENSE)
 
-Report:
+Report and presentation:
 [![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)  
