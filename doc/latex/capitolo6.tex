@@ -5,7 +5,7 @@
 %
 % GOOGLE
 \section{Google Cloud Machine Learning Services}
-Le \textit{Google Cloud Vision API} \cite{google-api} permettono di analizzare un'immagine e classificarla in categorie, rilevare oggetti e volti, cercare parole,
+Le \textit{Google Cloud Vision API}~\cite{google-api} permettono di analizzare un'immagine e classificarla in categorie, rilevare oggetti e volti, cercare parole,
 moderare contenuti offensivi e molto altro. Le immagini possono essere caricate assieme la richiesta, oppure utilizzare quelle già presenti nel Google Cloud Storage.
 %
 \subsection{Prerequisiti}
@@ -56,7 +56,7 @@ Il valore ritornato contiene, oltre ai soliti elementi, le coordinate latitudine
 %
 \paragraph{\textsf{SAFE\_SEARCH\_DETECTION}} Rileva contenti non adatti ai minori e restituisce la probabilità che l'immagine contenga
 contenuti per adulti, relativi a un ambito medico, violenti o che sia una modifica di un'immagine originale con scopi ludici o offensivi.
-I livelli di probabilità sono espressi secondo la scala a sei grada illustrata precedentemente.
+I livelli di probabilità sono espressi secondo la scala a sei gradi illustrata precedentemente.
 %
 \paragraph{\textsf{IMAGE\_PROPERTIES}} Restituisce una lista di colori dominanti; per ogni colore è presente la sua descrizione in formato RGB,
 un valore di punteggio e il numero di pixel di quel colore presenti nell'immagine (in rapporto al totale).
@@ -77,7 +77,7 @@ Non è consigliabile l'utilizzo applicativo e/o in applicazione critiche.
 %
 \subsection{Tariffe}
 La Cloud Vision API fornisce diversi metodi per analizzare un'immagine.
-Ad ogni metodo corrisponde una tariffa che viene applicata ad ogni utilizzo su un'immagine, chiamato \textit{unità};
+Per ogni metodo corrisponde una tariffa che viene applicata a ogni utilizzo su un'immagine, chiamato \textit{unità};
 se, ad esempio, due metodi sono applicati alla stessa immagine allora ai fini tariffari verranno conteggiati separatamente.
 Il prezzo è determinato dal numero di unità per mese e il costo per ogni metodo è indicato per 1000 unità/mese in dollari, come indicato in tabella \ref{tab:google-tariffe}.
 %

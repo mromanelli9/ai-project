@@ -5,7 +5,7 @@
 
 % MICROSOFT
 \section{Microsoft Cognitive Services}
-Per quanto concerne il riconoscimento delle immagini, Microsoft offre le diverse API per l'analisi delle immagini, raggruppate nella categoria \textit{Vision}:
+Per quanto concerne il riconoscimento delle immagini, Microsoft offre diverse API per l'analisi delle immagini, raggruppate nella categoria \textit{Vision}:
 \begin{itemize}
 \item \textit{Computer Vision API}: che comprende diverse funzioni, dal riconoscimento di oggetti alla creazione di anteprime;
 \item \textit{Content Moderator}: per aiutare i moderatori nell'analisi di immagini, testi e video (verrà analizzata solo l'analisi di immagini);
@@ -15,9 +15,10 @@ Per quanto concerne il riconoscimento delle immagini, Microsoft offre le diverse
 \end{itemize}
 %
 \subsection{Prerequisiti}
-Caratteristiche immagini:
+Caratteristiche immagini\footnote{Per un confronto con i requisiti richiesti dalle altre piattaforme,
+vedere la Tabella~\ref{tab:tab-riass-immagini}.}:
 \begin{itemize}
-\item Metodo: dati grezzi (stream application/octet) o url.
+\item Metodo: dati grezzi (stream application/octet) o URL.
 \item Formati supportati: JPEG, PNG, GIF, BMP.
 \item Caratteristiche minime: 50x50 pixel.
 \item Dimensione massima: 4 MB.
@@ -25,25 +26,26 @@ Caratteristiche immagini:
 Altro:
 \begin{itemize}
 \item Disponibilità: Stati Uniti occidentali, Stati Uniti Orientali 2, Stati Uniti centro-occidentali, Europa occidentale, Asia sud-orientale
-\footnote{Per conoscere in dettaglio le aree visitare la pagina: \url{https://azure.microsoft.com/en-us/regions/}.}.
+\footnote{Per conoscere in dettaglio le aree, visitare la pagina \href{https://azure.microsoft.com/en-us/regions/}{Azure regions}.}.
 \end{itemize}
 %
 \subsection{Computer Vision API}\label{subsec:computer-vision-api}
 In base allo scopo per cui si vuole analizzare l'immagine, le \textit{Computer Vision API} \cite{microsoft-api} mettono a disposizione diversi metodi per ottenere le informazioni desiderate.
 
 \paragraph{Tagging} Le API ritornano un insieme di etichette (in formato JSON) che descrivono gli oggetti presenti nell'immagine, come oggetti, esseri viventi, azioni, paesaggi; per ogni etichetta viene anche fornito il livello di \textit{confidence} (affidabilità). I tag non sono in alcun modo organizzati fra loro e non esiste nessun tipo di ereditarietà.
-Nel caso un tag sia ambiguo viene fornito in aggiunta un \textit{hint} che ne spiega il contenuto.
+Nel caso un tag sia ambiguo viene fornito in aggiunta un aiuto (\textit{hint}) che ne spiega il contenuto.
 Al momento la sola lingua supportata è l'inglese.
 
 \paragraph{Classificazione} L'immagine viene classificata in categorie che seguono una tassonomia con ereditarietà di tipo padre-figlio. Questa tassonomia prevede 86 categorie\footnote{\url{https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/category-taxonomy}} e classifica gli elementi visivi in modo più o meno specifico.
+Per esempio, una categoria è \textit{food}, che comprende \textit{bread}, \textit{pizza}, \textit{fastfood}, \ldots.
 
-\paragraph{Identificazione del tipo} E' possibile classificare l'immagine come in bianco o nero o a colori, se è un disegno o se è del tipo \textit{clip-art}; in quest'ultimo caso viene fornito un livello di qualità dell'immagine, compreso fra 0 e 3.
+\paragraph{Identificazione del tipo} È possibile classificare l'immagine come in bianco o nero o a colori, se è un disegno o se è del tipo \textit{clip-art}; in quest'ultimo caso viene fornito un livello di qualità dell'immagine, compreso fra 0 e 3.
 
 \paragraph{Riconoscimento volti} Riconosce i volti umani e restituisce la posizione (coordinate) di questi all'interno dell'immagine, come anche età e sesso della persona.
 
 \paragraph{Contenuto personalizzato} Ideato per raffinare la tassonomia a 86 categorie utilizzando informazioni specifiche sul dominio.
-Attualmente sono supportati solamente il riconoscimento dei volti delle persone famose e luoghi di interesse,
-quindi solamente per le categorie persone, gruppi di persone e luoghi di interesse.
+Attualmente sono supportati solamente il riconoscimento dei volti delle persone famose e luoghi di interesse
+(categorie: persone, gruppi di persone e luoghi di interesse).
 
 \paragraph{Generazione di descrizioni} Genera una lista di frasi (in lingua inglese) che descrivono il contenuto dell'immagine, ordinate secondo un livello di affidabilità calcolato per ogni descrizione.
 
@@ -62,16 +64,17 @@ Le \textit{Content Moderator’s image moderation API} \cite{microsoft-api-2} pe
 Si possono distinguere tre tipi di operazione.
 \begin{itemize}
 \item \textsf{Evaluate}: rileva se l'immagine contiene contenuti per adulti e/o contenuti osé.
-\item \textsf{Find Faces}: permette di identificare la probabilità di trovare dei volti e, in caso positivo, quanti ne sono presenti; potrebbe essere utilizzato, ad esempio, per evitare che gli utenti inviino informazioni personali (come la propria persona).
+\item \textsf{Find Faces}: permette di identificare la probabilità di trovare dei volti e, in caso positivo, quanti ne sono presenti;
+potrebbe essere utilizzato, ad esempio, per evitare che gli utenti inviino foto personali riguardanti la propria persona.
 \item \textsf{Match}: è possibile creare e personalizzare una lista dei contenuti che si vogliono bloccare; a questo punto il sistema di moderazione confronta le immagini caricate
 con quelle presenti nella lista, identificando non solo i doppioni ma anche versioni leggermente modificate.
-Il sistema fornisce anche un insieme di etichette per identificare al meglio il tipo di contenuto, come nudità, alcool, armi, sfruttamento minorile, eccettera.
+Il sistema fornisce anche un insieme di etichette per identificare al meglio il tipo di contenuto, come nudità, alcool, armi, sfruttamento minorile, eccetera.
 \end{itemize}
 %
 %
 \subsection{Emotion API}
 Dato uno o più volti in un'immagine, l'\textit{Emotion API} \cite{microsoft-api-4} permette di identificare le espressioni del viso e riconoscere quali emozioni vuole trasmettere.
-Le emozioni rilevabili sono rabbia, paura, felicità, espressione neutra, tristezza, sorpresa, disprezzo e disgusto (le ultime due sono sperimentali).
+Le emozioni rilevabili sono rabbia, paura, felicità, espressione neutra, tristezza, sorpresa, disprezzo e disgusto\footnote{Disprezzo e disgusto sono sperimentali}.
 Per ognuna di queste, viene restituito un punteggio corrispondente alla probabilità che quella data emozione sia espressa nel volto.
 
 L'utilizzo di questa funzione è di due tipologie:
@@ -85,7 +88,7 @@ L'utilizzo di questa funzione è di due tipologie:
 Questa funzione permette un'analisi più approfondita dei volti rispetto alle \textit{Computer Vision API}, includendo anche funzioni di confronto e ricerca.
 
 \paragraph{Rilevamento volti} Rileva i volti presenti nell'immagine (fino a 64) e restituisce le coordinate del rettangolo che ingloba il viso, gli attributi facciali
-e i punti di riferimento
+e i punti di riferimento.
 I punti di riferimento sono le coordinate degli elementi (di riferimento) del viso, come le pupille, le sopracciglia, i punti della bocca, il naso, eccetera.
 Fra gli attributi facciali si trovano l'eta, il sesso, l'intensità del sorriso, un valore per indicare la tipologia di barba, la posizione tridimensionale del volto
 espressa in gradi di Tait-Bryan (imbardata, rollio e beccheggio), la presenza di occhiali, le emozioni (vedi sezione precedente), eccetera.
@@ -106,28 +109,21 @@ utile per cercare altre foto di una persona conosciuta.
 Il secondo ignora il valore di soglia e restituisce una lista ordinata di volti simili, anche se il valore di verosimiglianza è basso;
 può essere utilizzato, ad esempio, per la ricerca di volti di personaggi famosi.
 
-\paragraph{Aggregazione di volti} Dato un insieme di volti (da 2 a 1.000), questo metodo raggruppa automaticamente i volti simili fra loro creando dei sotto insiemi.
+\paragraph{Aggregazione di volti} Dato un insieme di volti (da 2 a 1000), questo metodo raggruppa automaticamente i volti simili fra loro creando dei sotto insiemi.
 Ogni gruppo è un insieme disgiunto proprio dell'insieme di partenza; ogni volto all'interno del gruppo può essere considerato come della stessa persona.
-E' previsto un gruppo speciale, chiamato \textsf{messyGroup}, contente quei volti che non trovano riscontri di similarità.
+È previsto un gruppo speciale, chiamato \textsf{messyGroup}, contente quei volti che non trovano riscontri di similarità.
 %
-%
-%\subsection{Tariffe} Due tipologie di piani:
-%\begin{itemize}
-%\item Gratuito: fino a 5000 chiamate al mese, massimo 20 chiamate al minuto;
-%\item Standard: 0,0015\$ a chiamata, fino a 10 TPS.
-%\end{itemize}
 \subsection{Tariffe}
-Il piano gratuito prevede la possibilità di effettuare 5.000 chiamate al mese per le \textit{Vision API} e 30.000 per la \textit{Emotion API} e \textit{Face API}, con un limite di 20 chiamate al minuto tranne che per la moderazione, dove il limite è di una chiamata/secondo.
-I piani a pagamento, invece, variano dai 2,50 \$ per 1.000 chiamate fino a 0,65 \$, in base al servizio richiesto e al numero di chiamate effettuate al mese.
-La tabella \ref{tab:microsoft-tariffe} riassume i costi, espressi in dollari americani (USD) ogni 1.000 chiamate; nelle colonne troviamo il carico di lavoro, espresso in chiamate alle API al mese.
+Il piano gratuito prevede la possibilità di effettuare 5000 chiamate (all'API) al mese per le \textit{Vision API} e 30000 per la \textit{Emotion API} e \textit{Face API}, con un limite di 20 chiamate al minuto tranne che per la moderazione, dove il limite è di una chiamata/secondo.
+I piani a pagamento, invece, variano dai 2,50\$ per 1000 chiamate fino a 0,65\$, in base al servizio richiesto e al numero di chiamate effettuate al mese.
+La Tabella~\ref{tab:microsoft-tariffe} riassume i costi, espressi in dollari americani (USD) ogni 1000 chiamate; nelle colonne troviamo il carico di lavoro, espresso in chiamate alle API al mese.
 
-Per la \textit{Content Moderator API}, invece, il piano gratuito prevede 5.000 chiamate al mese e un massimo di una al secondo.
-Il piano standard parte da 1,00 \$ ogni 1.000 chiamate fino a 1M di chiamate/mese, 0,75 \$ da 1M a 5M, 0,60 \$ da 5M a 10M e 0,60 \$ fino a 20M.
+Per la \textit{Content Moderator API}, invece, il piano gratuito prevede 5000 chiamate al mese e un massimo di una al secondo.
+Il piano standard parte da 1,00\$ ogni 1000 chiamate fino a 1M di chiamate/mese, 0,75\$ da 1M a 5M, 0,60\$ da 5M a 10M e 0,60\$ fino a 20M.
 %
 \begin{table}[!h]
 \centering
-{\tiny
-\begin{tabularx}{.4\textwidth}{@{} l?c|c|c @{}}
+\begin{tabularx}{.6\textwidth}{@{} l?c|c|c @{}}
 \toprule
 Metodo & 1 - 1M & 1M - 5M & 5M - 20M  \\ \hline
 \midrule
@@ -143,18 +139,17 @@ Metodo & 1 - 1M & 1M - 5M & 5M - 20M  \\ \hline
 \multicolumn{1}{l?}{\textsf{Get Thumbnail}} & 1,00 & 0,80 & 0,65  \\
 \multicolumn{1}{l?}{\textsf{Color}} & 1,00 & 0,80 & 0,65  \\
 \multicolumn{1}{l?}{\textsf{Image Type}} & 1,00 & 0,80 & 0,65 \\
-\end{tabularx}}
+\end{tabularx}
 \caption{Tariffe per le Computer Vision API}
 \label{tab:microsoft-tariffe}
 \end{table}
 %
 
 Per le \textit{Emotion API} è previsto l'utilizzo gratuito fino a 30K chiamate al mese.
-Alternativamente il costo è 0,10 \$ ogni 1.000 chiamate per il piano base e 0,25 \$ per quello standard
-\footnote{Per le differenze fra il piano base e standard si rimanda alla documentazione ufficiale.}.
+Alternativamente il costo è 0,10\$ ogni 1000 chiamate per il piano base e 0,25 \$ per quello standard\footnote{Per le differenze fra il piano base e standard si rimanda alla documentazione ufficiale.}.
 
 Per le \textit{Face API} il limite per il piano gratuito è lo stesso della precedente, mentre i costi variano in base al numero di transizioni:
-fino a 1M il costo è di 1,50 \$ ogni 1.000 chiamate, fino a 5M di 1,10 \$ e fino a 20M di 0,65 \$.
-Il costo per lo spazio di archiviazione è di 0,50 \$ ogni 1.000 immagini/mese con un massimo di 4MB a immagine.
+fino a 1M il costo è di 1,50\$ ogni 1000 chiamate, fino a 5M di 1,10\$ e fino a 20M di 0,65\$.
+Il costo per lo spazio di archiviazione è di 0,50\$ ogni 1000 immagini/mese con un massimo di 4MB a immagine.
 %
 %
