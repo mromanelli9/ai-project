@@ -1,0 +1,109 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX root = relazione.tex
+% !TeX spellcheck = it_IT
+
+% DETTAGLI TECNICI
+\section{Dettagli tecnici}\label{sec:dettagli-tecnici}
+Finora si è parlato a livello astratto di servizi, piattaforme e metodi, senza spiegare esattamente come avviene
+una chiamata a una certa API, quali sono i valori restituti e come elaborarli.
+Verranno presi in considerazione anche le problematiche legate alla scelta del linguaggio di programmazione
+da utilizzare e/o la presenza di eventuali framework disponibli.
+%
+\subsection{REST API}\label{subsec:rest-api}
+Per accedere alle funzionalità è sufficiente effettuare una chiamata (REST: \textit{REpresentational State Transfer})
+all'indirizzo HTTP (\textit{endpoint}) fornito nelle documentazioni.
+
+Sono necessari, quindi, i seguenti passi:
+\begin{enumerate}
+	\item Inizializzazione:
+	\begin{enumerate}
+		\item Preparazione dei parametri
+		\item inizializzazione della chiamata
+	\end{enumerate}
+	\item Chiamata all'endpoint
+	\item Elaborazione del risultato
+\end{enumerate}
+
+Si prenda ora, a titolo d'esempio, una chiamata alle Microsoft Computer Vision API
+per l'analisi di un'immagine \textsf{ImageRawData} utilizzando il metodo \textsf{analyses}
+(permette di estrarre le caratteristiche visive dall'immagine) per avere una descizione
+dell'immagine.
+%
+\paragraph{Inizializzazione}
+Innanzitutto è doveroso far notare che, per poter utilizzare le API, è necessario
+essere in possesso di un (o più) codice di autenticazione.
+Quindi:
+%
+\begin{lstlisting}[language=Python,style=mystyle]
+endpoint = 'https://westcentralus.api.cognitive.microsoft.com/vision/v1/analyses'
+key = # Inserire qui la primary key
+params = {
+	"visualFeatures" : "Description",
+	"language" : "en"
+}
+headers["Ocp-Apim-Subscription-Key"] = _key
+headers["Content-Type"] = "application/octet-stream"
+\end{lstlisting}
+%
+\paragraph{Chiamata all'endpoint}
+Si effettua ora una chiamata tramite un certo metodo \textsf{httpRequest} adibito a
+effettuare chiamate HTTP:
+%
+\begin{lstlisting}[language=Python,style=mystyle]
+res = httpRequest( endpoint, json=None, ImageRawData, headers, params )
+\end{lstlisting}
+In questo caso specifichiamo \textsf{json=None} in quanto si carica direttamente l'immagine
+invece che passare un indirizzo URL.
+%
+\paragraph{Elaborazione del risultato}
+Se la richiesta va a buon fine (si è autorizzati, c'è connessione, la richiesta è conforme,\ldots)
+si otterranno i risultati del metodo desiderato in formato JSON, come ad esempio:
+\begin{lstlisting}[style=myJSON]
+{ 'description':
+	{ 'captions':
+		[ { 'confidence': 0.8454074008443188,
+						'text': 'a large airplane at an airport'}
+		]}
+}
+\end{lstlisting}
+%
+\subsection{Scelta del linguaggio di programmazione}\label{subsec:scelta-linguaggio}
+Questa è una scelta importante che va ponderata attentamente.
+Potrebbe essere il caso che una piattaforma non offra la documentazione necessaria
+per un certo linguaggio oppure che per alcuni ci siano framework o librerie
+già scritte, facilitando il lavoro dello sviluppatore.
+In Tabella~\ref{tab:ling-programazione} sono stati alcuni dei linguaggi
+di programmazione previsti nella documentazione ufficiale\footnote{L'assenza di un determinato linguaggio
+all'interno della tabella non preclude l'utilizzo dello stesso per i servizi visti.}.
+
+Se nella documentazione sono presenti esempi con un certo linguaggio, allora questo sarà presente
+nella prima riga della tabella.
+La seconda riga, invece, evidenzia la presenza di liberie/framework per un certo linguaggio.
+%
+\begin{table}
+\centering
+\caption{Linguaggi di programmazione presenti nelle documentazioni ufficiali.}
+\label{tab:ling-programazione}
+{\tiny
+\begin{tabularx}{\linewidth}{c?l|l|l|l}
+\toprule
+	& Microsoft Vision & IBM Visual Recognition & Amazon Rekognition     & Google Cloud Vision \\ \hline
+\midrule
+Esempi forniti                & cURL             & cURL                   & AWS CLI             & cURL \\
+	& C\#              & Python                 & Java                   & C\#                 \\
+	& Java             & Java                   &                        & Java                \\
+	& Javascript       & Node.js                &                        & GO                  \\
+	& Object C         &                        &                        & Node.js             \\
+	& PHP              &                        &                        & PHP                 \\
+	& Python           &                        &                        & Python              \\
+	& Ruby             &                        &                        & Ruby                \\ \hline
+Framework                     & n.p.             & Node.js                & Command Line Interface & tutti quelli sopra  \\
+	&                  & Swift                  & Javascript             &                     \\
+	&                  & Python                 & Python                 &                     \\
+	&                  & Java                   & Java                   &                     \\
+	&                  & Unity                  & Ruby                   &                     \\
+	&                  & .NET                   & .NET                   &                     \\
+\end{tabularx}}
+\end{table}
+%
