@@ -5,7 +5,7 @@
 
 % AMAZON
 \section{Amazon Artificial Intelligence}
-Amazon Rekognition \cite{amazon-api} è il servizio di Amazon che permette di riconoscere oggetti, volti, scene, nelle immagini e molto altro.
+Amazon Rekognition~\cite{amazon-api} è il servizio di Amazon che permette di riconoscere oggetti, volti, scene, nelle immagini e molto altro.
 Inoltre permette l'integrazione con le altre piattaforme offerte da Amazon, come Amazon S3, AWS Lambda e altri servizi AWS.
 
 \subsection{Prerequisiti}
@@ -25,8 +25,8 @@ Altro:
 \subsection{Amazon Rekognition}
 Prima di descrivere cosa si può fare o meno con Amazon Rekognition, è necessaria fare una distinzione; le operazioni fornite dal servizio si suddividono in due categorie:
 \begin{itemize}
-\item Operazioni volatili (Non-storage API operations): le operazioni in questo gruppo non salvano alcuna informazione sui server Amazon.
-\item Operazioni persistenti (Storage-based API operations): l'utilizzo di queste operazioni comporta il salvataggio di alcuni metadati sui server.
+\item Operazioni volatili (\textit{non-storage API operations}): le operazioni in questo gruppo non salvano alcuna informazione sui server Amazon.
+\item Operazioni persistenti (\textit{storage-based API operations}): l'utilizzo di queste operazioni comporta il salvataggio di alcuni metadati sui server.
 Ad esempio nella ricerca di un volto viene salvata la rappresentazione vettoriale dei volti rilevati (mentre l'immagine di partenza no).
 \end{itemize}
 
@@ -36,8 +36,8 @@ Permette, inoltre, il riconoscimento di scene (una spiaggia o un tramonto), even
 %Questa operazione (\textit{DetectLabels}) non salva alcuna informazione sul server.
 
 \paragraph{Analisi volti} Permette il riconoscimento di volti all'interno dell'immagine, la loro localizzazione spaziale e l'analisi di attributi facciali come
-il sesso, l'eta, emozioni, se la persona sta sorridendo, se ha gli occhi aperti, presenza o assenza di barba/baffi, eccetera
-\footnote{Per una lista esaustiva si faccia riferimento alla documentazione ufficiale all'indirizzo: \url{http://docs.aws.amazon.com/rekognition/latest/dg/API_Types.html}.}.
+il sesso, l'eta, emozioni, se la persona sta sorridendo, se ha gli occhi aperti, presenza o assenza di barba/baffi, eccetera\footnote{Per una lista esaustiva
+si faccia riferimento alla documentazione ufficiale all'indirizzo: \href{http://docs.aws.amazon.com/rekognition/latest/dg/API_Types.html}{API Types}.}.
 La localizzazione avviene tramite un immaginario rettangolo (sotto forma di coordinate $(x, y)$ degli angoli) che circonda ogni viso rilevato e dei punti di rifermento su elementi come il naso,
 gli occhi, le orecchie, la bocca, ecc.
 Naturalmente, gli algoritmi di riconoscimento sono più affidabili in presenza di visi rivolti frontalmente e potrebbero non riconoscere (o farlo con un punteggio inferiore) visi oscurati
