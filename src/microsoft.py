@@ -83,7 +83,8 @@ def analyzeImage(image, mode):
 	Parameters:
 	mode: select the type of operation to perform
 		0: Analyze image (Tags and Classification)
-		1: OCR
+		1: Face Detection
+		2: OCR
 
 	[Documentation can be found at: https://goo.gl/htwlmc]
 	"""
