@@ -67,6 +67,14 @@ def analyzeImage(source, mode):
 		# In this case you want to use 'DetectFaces'
 		print( "[+] Mode: DetectFaces.")
 		amz_target = 'RekognitionService.DetectFaces'
+	elif mode == 2:
+		# In this case you want to use 'DetectModerationLabels'
+		print( "[+] Mode: DetectModerationLabels.")
+		amz_target = 'RekognitionService.DetectModerationLabels'
+	elif mode == 3:
+		# In this case you want to use 'RecognizeCelebrities'
+		print( "[+] Mode: RecognizeCelebrities.")
+		amz_target = 'RekognitionService.RecognizeCelebrities'
 
 	# Amazon content type - Rekognition expects 1.1 x-amz-json
 	content_type = 'application/x-amz-json-1.1'
@@ -108,6 +116,19 @@ def analyzeImage(source, mode):
 			},
 			"MaxLabels": 5,	# Maximum number of labels you want the service to return in the response.
 			"MinConfidence" : 75	# Specifies the minimum confidence level for the labels to return.
+		}
+	elif mode == 2:
+		request_dict = {
+			"MinConfidence": 50,
+			"Image": {
+				'Bytes': base64_string
+			}
+		}
+	elif mode == 3:
+		request_dict = {
+			"Image": {
+				'Bytes': base64_string
+			}
 		}
 
 
@@ -192,7 +213,10 @@ def parseDetectFacesResults(data, image_width, image_height):
 
 def main(argv):
 	localImage = argv[0]
-	mode = (0, 1)[len(argv) >= 2]
+	mode = 0 	# default
+
+	if len(argv) >= 2:
+		mode = int(argv[1])
 
 	print( "[+] Calling API..." )
 

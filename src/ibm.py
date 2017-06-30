@@ -94,7 +94,7 @@ if __name__ == "__main__":
 	_api_key = "***REMOVED***"	# my API key
 
 	# Check argument
-	assert len(sys.argv) >= 3, "[!] Argument missing."
+	assert len(sys.argv) >= 2, "[!] Argument missing."
 
 	main(sys.argv[1:])
 
