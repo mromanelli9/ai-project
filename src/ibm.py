@@ -94,7 +94,7 @@ if __name__ == "__main__":
 	_api_key = "5499a7b475d76e001439ec1f0b37af8d7af9fb64"	# my API key
 
 	# Check argument
-	assert len(sys.argv) >= 3, "[!] Argument missing."
+	assert len(sys.argv) >= 2, "[!] Argument missing."
 
 	main(sys.argv[1:])
 
