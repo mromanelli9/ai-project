@@ -69,10 +69,9 @@ si otterranno i risultati del metodo desiderato in formato JSON, come ad esempio
 \end{lstlisting}
 %
 \subsection{Scelta del linguaggio di programmazione}\label{subsec:scelta-linguaggio}
-Questa è una scelta importante che va ponderata attentamente.
-Potrebbe essere il caso che una piattaforma non offra la documentazione necessaria
-per un certo linguaggio oppure che per alcuni ci siano framework o librerie
-già scritte, facilitando il lavoro dello sviluppatore.
+Per aiutare il lettore nella scelta del linguaggio di programmazione
+da adottare per eventuali implementazioni, viene qui presentata una veloce analisi dei linguaggi
+riscontrati durante la produzione di questa analisi
 In Tabella~\ref{tab:ling-programazione} sono stati alcuni dei linguaggi
 di programmazione previsti nella documentazione ufficiale\footnote{L'assenza di un determinato linguaggio
 all'interno della tabella non preclude l'utilizzo dello stesso per i servizi visti.}.
@@ -81,7 +80,7 @@ Se nella documentazione sono presenti esempi con un certo linguaggio, allora que
 nella prima riga della tabella.
 La seconda riga, invece, evidenzia la presenza di liberie/framework per un certo linguaggio.
 %
-\begin{table}
+\begin{table}[!h]
 \centering
 \caption{Linguaggi di programmazione presenti nelle documentazioni ufficiali.}
 \label{tab:ling-programazione}
@@ -98,7 +97,7 @@ Esempi forniti                & cURL             & cURL                   & AWS 
 	& PHP              &                        &                        & PHP                 \\
 	& Python           &                        &                        & Python              \\
 	& Ruby             &                        &                        & Ruby                \\ \hline
-Framework                     & n.p.             & Node.js                & Command Line Interface & tutti quelli sopra  \\
+Framework              & non pervenuti          & Node.js                & Command Line Interface & tutti quelli sopra  \\
 	&                  & Swift                  & Javascript             &                     \\
 	&                  & Python                 & Python                 &                     \\
 	&                  & Java                   & Java                   &                     \\
@@ -106,4 +105,19 @@ Framework                     & n.p.             & Node.js                & Comm
 	&                  & .NET                   & .NET                   &                     \\
 \end{tabularx}}
 \end{table}
+%
+Per le prove utilizzate in questa analisi, per esempio, si è scelto di utilizzare il linguaggio Python\footnote{Versione 3.},
+principalmente per i seguenti motivi:
+\begin{itemize}
+	\item il linguaggio era già conosciuto dall'autore di questo documento;
+	\item è presente in quasi tutti gli esempi presenti nelle documentazioni;
+	\item ogni piattaforma mette a disposizione framework per questo linguaggio;
+	\item è un linguaggio spesso utilizzato nell'ambito nel \textit{machine learning} e dell'intelligenza artificiale.
+\end{itemize}
+Utilizzando un liguaggio già conosciuto e gli esempi forniti è stato ridotto di molto il tempo di scrittura del codice per le prove effettuate
+(inoltre il codice presente negli esempi è semplice e ben scritto).
+
+
+
+
 %
