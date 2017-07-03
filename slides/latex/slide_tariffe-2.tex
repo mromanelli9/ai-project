@@ -3,24 +3,19 @@
 % !TEX root = presentazione.tex
 % !TeX spellcheck = it_IT
 %
-\begin{frame}[t]{Tariffe - IBM Visual Recognition}
+\begin{frame}[t]{Tariffe - Piani gratuti}
 \begin{itemize}
-	\item Piano gratuito:
+	\item Quantità di chiamate all'API:
 	\begin{itemize}
-		\item 250 immagini al giorno
-		\item un classificatore personalizzato con 5000 immagini
-		\item della durata di 30 giorni.
+		\item 5000 al mese (Microsoft, Amazon)
+		\item 1000 al mese (Google)
+		\item 250 al giorno (IBM)
 	\end{itemize}
-	\item Piano standard:
+	\item Altri limiti:
 	\begin{itemize}
-		\item 25000 chiamate al giorno
-		\item classificazione: [singola chiamata all'API]
-		\begin{itemize}
-			\item standard: 0,002\$
-			\item con classificatore personalizzato: 0,004\$
-		\end{itemize}
-		\item volti: 0,004\$ a chiamata
-		\item addestramento classificatore: 0,10\$ a immagine
+		\item 20 al minuto (Microsoft)
+		\item Durata massima di un mese (IBM)
+		\item Durata massima di 12 mesi (Amazon)
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -28,4 +23,6 @@
 %----------------------------------------------------------------------------------------
 %	APPUNTI:
 %		- 250 al giorno = 7500 al mese (però conteggio giornaliero)
+%		- Face API limite a 30K al mese per il gratuito e mediamente costa un po' di più
+%		- amazon conta anche i metadati facciali memorizzati
 %----------------------------------------------------------------------------------------
