@@ -22,11 +22,11 @@ def getAPIInfo(mode):
 	if mode == 0 or mode == 2:
 		# Vision API
 		data["endpoint"] = "https://westus.api.cognitive.microsoft.com/vision/v1.0/"
-		data["key"] = "***REMOVED***" # Vision API key 1
+		data["key"] = ***REMOVED*** # Vision API key 1
 	else:
 		# Fase API
 		data["endpoint"] = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/"
-		data["key"] = "***REMOVED***" # Vision API key 1
+		data["key"] = ***REMOVED*** # Vision API key 1
 
 	return data
 

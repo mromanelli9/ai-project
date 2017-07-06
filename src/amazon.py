@@ -35,9 +35,10 @@ def getSignatureKey(key, date_stamp, regionName, serviceName):
 def analyzeImage(source, mode):
 	# Read credentials from the environment
 	#access_key = os.environ.get('AWS_ACCESS_KEY_ID')
-	access_key = "***REMOVED***"
+
+	access_key = ***REMOVED***
 	#secret_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
-	secret_key = "***REMOVED***"
+	secret_key = ***REMOVED***
 
 	# Uncomment this line if you use temporary credentials via STS or similar
 	#token = os.environ.get('AWS_SESSION_TOKEN')
