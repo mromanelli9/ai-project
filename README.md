@@ -1,5 +1,8 @@
 # AI Project
-This is the project for Artificial Intelligence course at the University of Padova
+Project for Artificial Intelligence course at the University of Padova: _"Cognitive services and computer vision"_.
+
+The goal was to create a report on the major platforms that offer Cognitive Computing services,
+starting with a general introduction and then focus on computer vision. 
 
 ## Getting Started
 ### Prerequisites
@@ -16,9 +19,9 @@ cd ai-project/doc
 pdflatex relazione.tex
 ```
 
-## Licenses
-Code:
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)] (LICENSE)
+## License
+The source code is distributed under GNU GPL-3.0-only License.  
+Other material (including but not limited to pdf documents, figures, etc) is licensed under CC BY-NC-ND 4.0.  
 
-PDF files:
-[![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)  
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
