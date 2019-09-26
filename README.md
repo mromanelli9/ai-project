@@ -11,7 +11,7 @@ LaTeX, Python
 ### Installing
 First, clone this repo:
 ```
-git clone https://gitlab.com/mromanelli/ai-project
+git clone https://github.com/mromanelli9/ai-project
 ```
 Then compile the report:
 ```
